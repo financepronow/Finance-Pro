@@ -1,140 +1,1298 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>FinancePro – Personal Finance App for Windows</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinancePro — Control financiero personal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- SEO -->
-    <meta name="description" content="FinancePro es una aplicación moderna de finanzas personales para Windows. Controla gastos, metas y deudas en una interfaz limpia y profesional.">
-    <meta name="keywords" content="finance app, personal finance, windows finance app, control de gastos, budget app">
-    <meta name="author" content="FinancePro">
+:root {
+  --bg:        #0F172A;
+  --bg-dark:   #080D1A;
+  --surface:   #1E293B;
+  --border:    #334155;
+  --primary:   #7C3AED;
+  --primary-h: #6D28D9;
+  --accent:    #8B5CF6;
+  --success:   #10B981;
+  --danger:    #EF4444;
+  --warn:      #F59E0B;
+  --text:      #F8FAFC;
+  --muted:     #94A3B8;
+  --dim:       #64748B;
+  --radius:    14px;
+  --glow: 0 0 60px rgba(124,58,237,.25);
+}
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #0f1117;
-            color: #ffffff;
-            text-align: center;
-        }
+html { scroll-behavior: smooth; }
 
-        header {
-            padding: 80px 20px 40px 20px;
-        }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
 
-        h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
+/* ── Noise texture overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: .6;
+}
 
-        p.subtitle {
-            font-size: 18px;
-            color: #c0c0c0;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-        }
+/* ── NAVBAR ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 68px;
+  background: rgba(8,13,26,.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(51,65,85,.5);
+}
 
-        .btn-primary {
-            background-color: #00c896;
-            color: white;
-            padding: 16px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-        }
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--text);
+  letter-spacing: -.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
 
-        .btn-primary:hover {
-            background-color: #00a87d;
-            transform: scale(1.05);
-        }
+.nav-logo span {
+  display: inline-block;
+  width: 28px; height: 28px;
+  background: var(--primary);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem;
+}
 
-        section {
-            padding: 60px 20px;
-        }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: .9rem;
+  font-weight: 400;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--text); }
 
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            max-width: 900px;
-            margin: auto;
-        }
+.nav-cta {
+  background: var(--primary);
+  color: #fff !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 500 !important;
+  transition: background .2s !important;
+}
+.nav-cta:hover { background: var(--primary-h) !important; color: #fff !important; }
 
-        .feature-box {
-            background-color: #1a1d25;
-            padding: 25px;
-            border-radius: 12px;
-            width: 260px;
-        }
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 24px 100px;
+  overflow: hidden;
+}
 
-        footer {
-            padding: 30px;
-            background-color: #090b10;
-            font-size: 14px;
-            color: #888;
-        }
+.hero-glow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(124,58,237,.3) 0%, rgba(139,92,246,.1) 40%, transparent 70%);
+  pointer-events: none;
+}
 
-        a.footer-link {
-            color: #00c896;
-            text-decoration: none;
-        }
-    </style>
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(51,65,85,.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51,65,85,.2) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 30%, transparent 100%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(124,58,237,.12);
+  border: 1px solid rgba(124,58,237,.3);
+  color: var(--accent);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  animation: fadeUp .8s ease both;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--success);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--success);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .4; }
+}
+
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -.04em;
+  margin-bottom: 24px;
+  animation: fadeUp .8s .1s ease both;
+}
+
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, #7C3AED, #8B5CF6, #A78BFA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 560px;
+  margin: 0 auto 44px;
+  font-weight: 300;
+  animation: fadeUp .8s .2s ease both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeUp .8s .3s ease both;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--primary);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all .25s;
+  box-shadow: 0 0 30px rgba(124,58,237,.4);
+}
+.btn-primary:hover {
+  background: var(--primary-h);
+  transform: translateY(-2px);
+  box-shadow: 0 0 45px rgba(124,58,237,.6);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  transition: all .25s;
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,.1);
+  transform: translateY(-2px);
+}
+
+/* ── APP MOCKUP ── */
+.mockup-wrap {
+  margin-top: 80px;
+  position: relative;
+  animation: fadeUp .9s .4s ease both;
+}
+
+.mockup-glow {
+  position: absolute;
+  inset: -30px;
+  background: radial-gradient(ellipse, rgba(124,58,237,.2), transparent 70%);
+  pointer-events: none;
+}
+
+.mockup {
+  width: 320px;
+  margin: 0 auto;
+  background: var(--bg-dark);
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,.6), 0 0 0 1px rgba(124,58,237,.1);
+  position: relative;
+}
+
+.mockup-titlebar {
+  background: #080D1A;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot.r { background: #FF5F57; }
+.dot.y { background: #FFBD2E; }
+.dot.g { background: #28CA41; }
+.mockup-title {
+  margin-left: 8px;
+  font-family: 'Syne', sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: .02em;
+}
+
+.mockup-body { padding: 16px; }
+
+/* Mini stat cards */
+.mini-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.mini-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+}
+.mini-card-label { font-size: .65rem; color: var(--muted); font-weight: 400; margin-bottom: 4px; }
+.mini-card-value { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; }
+.mini-card-value.green { color: var(--success); }
+.mini-card-value.red { color: var(--danger); }
+.mini-card-value.purple { color: var(--accent); }
+.mini-card-value.white { color: var(--text); }
+
+/* Mini chart */
+.mini-chart {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+.mini-chart-title { font-size: .65rem; color: var(--muted); margin-bottom: 8px; }
+.bars { display: flex; align-items: flex-end; gap: 4px; height: 48px; }
+.bar {
+  flex: 1;
+  border-radius: 3px 3px 0 0;
+  transition: opacity .3s;
+}
+.bar:hover { opacity: .8; }
+
+/* Mini tabs */
+.mini-tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(0,0,0,.3);
+  border-radius: 8px;
+  padding: 3px;
+}
+.mini-tab {
+  flex: 1;
+  text-align: center;
+  font-size: .55rem;
+  padding: 4px 2px;
+  border-radius: 5px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mini-tab.active {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 500;
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: rgba(30,41,59,.4);
+  backdrop-filter: blur(10px);
+}
+
+.stat-item {
+  flex: 1;
+  min-width: 160px;
+  padding: 32px 24px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  animation: fadeUp .6s ease both;
+}
+.stat-item:last-child { border-right: none; }
+
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--text), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label { font-size: .82rem; color: var(--muted); font-weight: 300; }
+
+/* ── SECTIONS ── */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 100px 24px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 300;
+  max-width: 500px;
+  line-height: 1.7;
+}
+
+/* ── FEATURES GRID ── */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 64px;
+}
+
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: all .3s;
+  cursor: default;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(124,58,237,.5), transparent);
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.feature-card:hover {
+  border-color: rgba(124,58,237,.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 30px rgba(124,58,237,.1);
+}
+.feature-card:hover::before { opacity: 1; }
+
+.feature-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.fi-purple { background: rgba(124,58,237,.15); border: 1px solid rgba(124,58,237,.25); }
+.fi-green  { background: rgba(16,185,129,.12); border: 1px solid rgba(16,185,129,.25); }
+.fi-orange { background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.25); }
+.fi-blue   { background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.25); }
+.fi-red    { background: rgba(239,68,68,.12);  border: 1px solid rgba(239,68,68,.25); }
+.fi-teal   { background: rgba(20,184,166,.12); border: 1px solid rgba(20,184,166,.25); }
+
+.feature-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+
+.feature-desc {
+  color: var(--muted);
+  font-size: .88rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+.tag {
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--border);
+  color: var(--dim);
+  font-size: .7rem;
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+/* ── TABS SHOWCASE ── */
+.tabs-section { background: rgba(8,13,26,.5); }
+
+.tabs-showcase {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.tab-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+  transition: all .25s;
+  cursor: default;
+}
+.tab-card:hover {
+  border-color: rgba(124,58,237,.5);
+  background: rgba(124,58,237,.05);
+  transform: translateY(-3px);
+}
+
+.tab-emoji { font-size: 1.8rem; margin-bottom: 10px; display: block; }
+.tab-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: .88rem;
+  margin-bottom: 6px;
+}
+.tab-desc { font-size: .75rem; color: var(--muted); font-weight: 300; line-height: 1.5; }
+
+/* ── TECH STACK ── */
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.tech-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 10px 18px;
+  border-radius: 100px;
+  font-size: .83rem;
+  transition: all .2s;
+}
+.tech-chip:hover {
+  border-color: var(--accent);
+  background: rgba(124,58,237,.08);
+}
+.tech-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+}
+
+/* ── INSTALL STEPS ── */
+.steps {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.steps::before {
+  content: '';
+  position: absolute;
+  left: 23px;
+  top: 40px;
+  bottom: 40px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--primary), rgba(124,58,237,.1));
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 28px 0;
+  position: relative;
+}
+
+.step-num {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: .95rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 20px rgba(124,58,237,.4);
+}
+
+.step-content { padding-top: 10px; }
+.step-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+.step-desc { color: var(--muted); font-size: .88rem; font-weight: 300; line-height: 1.6; }
+
+.code-block {
+  background: var(--bg-dark);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-family: 'Courier New', monospace;
+  font-size: .8rem;
+  color: var(--success);
+  margin-top: 10px;
+  display: inline-block;
+}
+
+/* ── GDRIVE SECTION ── */
+.gdrive-card {
+  background: linear-gradient(135deg, rgba(30,41,59,.8), rgba(15,23,42,.9));
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gdrive-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(66,133,244,.08), transparent 70%);
+  pointer-events: none;
+}
+
+.gdrive-steps { display: flex; flex-direction: column; gap: 14px; }
+.gdrive-step {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.gdrive-step-n {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(66,133,244,.15);
+  border: 1px solid rgba(66,133,244,.3);
+  color: #4285F4;
+  font-size: .75rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.gdrive-step-text { font-size: .85rem; color: var(--muted); padding-top: 4px; line-height: 1.5; }
+.gdrive-step-text strong { color: var(--text); font-weight: 500; }
+
+/* ── CTA FINAL ── */
+.cta-section {
+  text-align: center;
+  padding: 120px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-glow {
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse, rgba(124,58,237,.2), transparent 70%);
+  pointer-events: none;
+}
+
+.cta-section .section-title { font-size: clamp(2rem, 5vw, 3.5rem); }
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--border);
+  padding: 36px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: rgba(8,13,26,.6);
+}
+
+.footer-left {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: .95rem;
+}
+.footer-left span { color: var(--muted); font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: .82rem; display: block; margin-top: 2px; }
+
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { color: var(--muted); text-decoration: none; font-size: .82rem; transition: color .2s; }
+.footer-links a:hover { color: var(--text); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* stagger children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:.05s; }
+.reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:.15s; }
+.reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:.25s; }
+.reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:.35s; }
+.reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:.45s; }
+.reveal-stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:.55s; }
+.reveal-stagger.visible > *:nth-child(7) { opacity:1; transform:none; transition-delay:.65s; }
+.reveal-stagger.visible > *:nth-child(8) { opacity:1; transform:none; transition-delay:.75s; }
+.reveal-stagger.visible > *:nth-child(9) { opacity:1; transform:none; transition-delay:.85s; }
+.reveal-stagger.visible > *:nth-child(10){ opacity:1; transform:none; transition-delay:.95s; }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--dim); }
+
+/* responsive */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .gdrive-card { grid-template-columns: 1fr; }
+  footer { padding: 28px 20px; flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+  .stat-item { min-width: 130px; }
+}
+</style>
 </head>
-
 <body>
 
-<header>
-    <h1>FinancePro</h1>
-    <p class="subtitle">
-        Aplicación moderna de finanzas personales para Windows. 
-        Controla gastos, metas y deudas en una interfaz clara y profesional.
-    </p>
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span>💰</span>
+    FinancePro
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Funciones</a></li>
+    <li><a href="#modulos">Módulos</a></li>
+    <li><a href="#instalacion">Instalación</a></li>
+    <li><a href="#gdrive">Google Drive</a></li>
+    <li><a href="#instalacion" class="nav-cta">Descargar</a></li>
+  </ul>
+</nav>
 
-    <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.0/FinancePro_Setup_v1.0.0.exe"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="btn-primary">
-       ⬇ Descargar FinancePro v1.0.0
-    </a>
-</header>
-
-<section>
-    <h2>Características</h2>
-
-    <div class="features">
-        <div class="feature-box">
-            <h3>📊 Dashboard Inteligente</h3>
-            <p>Visualiza tus finanzas con estadísticas claras y organizadas.</p>
-        </div>
-
-        <div class="feature-box">
-            <h3>🎯 Metas Financieras</h3>
-            <p>Crea y administra objetivos de ahorro fácilmente.</p>
-        </div>
-
-        <div class="feature-box">
-            <h3>💳 Control de Deudas</h3>
-            <p>Monitorea tus compromisos y mejora tu planificación financiera.</p>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div>
+    <div class="hero-badge">by Setracus · Windows · Python 3.14</div>
+    <h1>Tu dinero,<br><em>bajo control.</em></h1>
+    <p>Control financiero personal completo — ingresos, metas, deudas, gastos fijos y respaldo en la nube. Todo desde una sola app de escritorio.</p>
+    <div class="hero-actions">
+      <a href="#instalacion" class="btn-primary">⬇ Descargar FinancePro</a>
+      <a href="#features" class="btn-secondary">Ver funciones →</a>
     </div>
+
+    <!-- APP MOCKUP -->
+    <div class="mockup-wrap">
+      <div class="mockup-glow"></div>
+      <div class="mockup">
+        <div class="mockup-titlebar">
+          <div class="dot r"></div>
+          <div class="dot y"></div>
+          <div class="dot g"></div>
+          <span class="mockup-title">FinancePro</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mini-stats">
+            <div class="mini-card">
+              <div class="mini-card-label">Saldo total</div>
+              <div class="mini-card-value white">$4,820,000</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-label">Ingresos mes</div>
+              <div class="mini-card-value green">$3,200,000</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-label">Gastos mes</div>
+              <div class="mini-card-value red">$1,640,000</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-label">Metas activas</div>
+              <div class="mini-card-value purple">4 metas</div>
+            </div>
+          </div>
+          <div class="mini-chart">
+            <div class="mini-chart-title">Distribución del mes</div>
+            <div class="bars" id="bars"></div>
+          </div>
+          <div class="mini-tabs">
+            <div class="mini-tab active">💰 Nuevo</div>
+            <div class="mini-tab">📋 Historial</div>
+            <div class="mini-tab">🎯 Metas</div>
+            <div class="mini-tab">💳 Deudas</div>
+            <div class="mini-tab">📆 Gastos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- STATS BAR -->
+<div class="stats-bar reveal-stagger">
+  <div class="stat-item">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Módulos integrados</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Local · sin suscripción</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">CSV</div>
+    <div class="stat-label">Datos siempre tuyos</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">GDrive</div>
+    <div class="stat-label">Respaldo en la nube</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Funcionalidades</span>
+      <h2 class="section-title">Todo lo que necesitas<br>en un solo lugar</h2>
+      <p class="section-sub">Diseñado para ser completo sin ser complicado. Cada función está construida para el uso real, no para impresionar en una demo.</p>
+    </div>
+
+    <div class="features-grid reveal-stagger">
+      <div class="feature-card">
+        <div class="feature-icon fi-purple">📊</div>
+        <div class="feature-title">Historial completo</div>
+        <div class="feature-desc">Registra ingresos y gastos con categorías, fechas manuales y búsqueda. Edita o elimina cualquier movimiento con confirmación.</div>
+        <div class="feature-tags">
+          <span class="tag">Búsqueda</span>
+          <span class="tag">Filtros</span>
+          <span class="tag">Edición</span>
+          <span class="tag">Papelera</span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon fi-green">🎯</div>
+        <div class="feature-title">Metas de ahorro</div>
+        <div class="feature-desc">Crea metas con objetivo, fecha límite y aportes progresivos. Visualiza el avance con barras de progreso y barra de historial completo.</div>
+        <div class="feature-tags">
+          <span class="tag">Progreso</span>
+          <span class="tag">Aportes</span>
+          <span class="tag">Retiros</span>
+          <span class="tag">Historial</span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon fi-red">💳</div>
+        <div class="feature-title">Control de deudas</div>
+        <div class="feature-desc">Lleva el registro de cada deuda con acreedores, montos, abonos y fecha límite. Visualiza el progreso de pago en tiempo real.</div>
+        <div class="feature-tags">
+          <span class="tag">Abonos</span>
+          <span class="tag">Historial</span>
+          <span class="tag">Fecha límite</span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon fi-orange">📆</div>
+        <div class="feature-title">Gastos fijos mensuales</div>
+        <div class="feature-desc">Arriendo, Netflix, servicios. Marca pagos con fecha, agrega observaciones, deshace pagos y proyecta el próximo mes automáticamente.</div>
+        <div class="feature-tags">
+          <span class="tag">Proyección</span>
+          <span class="tag">Deshacer pago</span>
+          <span class="tag">Observaciones</span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon fi-blue">🛡️</div>
+        <div class="feature-title">Fondo de emergencia</div>
+        <div class="feature-desc">Gestiona tu colchón financiero con depósitos, retiros y seguimiento del objetivo. Calcula cuántos meses puedes cubrir tus gastos.</div>
+        <div class="feature-tags">
+          <span class="tag">Depósitos</span>
+          <span class="tag">Retiros</span>
+          <span class="tag">Objetivo</span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon fi-teal">🧾</div>
+        <div class="feature-title">Evidencias de pago</div>
+        <div class="feature-desc">Adjunta imágenes, PDFs o cualquier archivo como comprobante de cada pago. Organizado por categoría con vista rápida integrada.</div>
+        <div class="feature-tags">
+          <span class="tag">Imágenes</span>
+          <span class="tag">PDF</span>
+          <span class="tag">Archivos</span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon fi-purple">📈</div>
+        <div class="feature-title">Gráficos y tendencias</div>
+        <div class="feature-desc">Visualiza tu distribución de gastos en torta, barras comparativas por mes y tendencias de ahorro a lo largo del tiempo.</div>
+        <div class="feature-tags">
+          <span class="tag">Distribución</span>
+          <span class="tag">Tendencias</span>
+          <span class="tag">Matplotlib</span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon fi-green">📐</div>
+        <div class="feature-title">Capacidad de endeudamiento</div>
+        <div class="feature-desc">Calcula automáticamente cuánto puedes endeudarte según tu ingreso y gastos actuales. Indicadores de salud financiera en tiempo real.</div>
+        <div class="feature-tags">
+          <span class="tag">Indicadores</span>
+          <span class="tag">Límites</span>
+          <span class="tag">Salud financiera</span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon fi-orange">☁️</div>
+        <div class="feature-title">Respaldo Google Drive</div>
+        <div class="feature-desc">Conecta tu cuenta de Google y respalda todos tus datos en la nube con un clic. Restaura desde cualquier backup anterior.</div>
+        <div class="feature-tags">
+          <span class="tag">OAuth 2.0</span>
+          <span class="tag">Auto-backup</span>
+          <span class="tag">Restaurar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MÓDULOS -->
+<section id="modulos" class="tabs-section">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Módulos</span>
+      <h2 class="section-title">10 pestañas,<br>todo conectado</h2>
+      <p class="section-sub">Cada módulo comparte los mismos datos. Un pago en Gastos Fijos actualiza automáticamente el historial general.</p>
+    </div>
+
+    <div class="tabs-showcase reveal-stagger">
+      <div class="tab-card">
+        <span class="tab-emoji">💰</span>
+        <div class="tab-name">Nuevo movimiento</div>
+        <div class="tab-desc">Registra ingresos y gastos rápidamente</div>
+      </div>
+      <div class="tab-card">
+        <span class="tab-emoji">📋</span>
+        <div class="tab-name">Historial</div>
+        <div class="tab-desc">Todos los movimientos con filtros y búsqueda</div>
+      </div>
+      <div class="tab-card">
+        <span class="tab-emoji">📊</span>
+        <div class="tab-name">Distribución</div>
+        <div class="tab-desc">Gráfico de torta por categorías</div>
+      </div>
+      <div class="tab-card">
+        <span class="tab-emoji">📈</span>
+        <div class="tab-name">Tendencias</div>
+        <div class="tab-desc">Evolución mensual de ingresos vs gastos</div>
+      </div>
+      <div class="tab-card">
+        <span class="tab-emoji">🎯</span>
+        <div class="tab-name">Metas</div>
+        <div class="tab-desc">Ahorro con objetivo y progreso visual</div>
+      </div>
+      <div class="tab-card">
+        <span class="tab-emoji">💳</span>
+        <div class="tab-name">Deudas</div>
+        <div class="tab-desc">Seguimiento de deudas y abonos</div>
+      </div>
+      <div class="tab-card">
+        <span class="tab-emoji">📆</span>
+        <div class="tab-name">Gastos Fijos</div>
+        <div class="tab-desc">Pagos recurrentes y proyección mensual</div>
+      </div>
+      <div class="tab-card">
+        <span class="tab-emoji">🧾</span>
+        <div class="tab-name">Evidencias</div>
+        <div class="tab-desc">Comprobantes de pago adjuntos</div>
+      </div>
+      <div class="tab-card">
+        <span class="tab-emoji">🛡️</span>
+        <div class="tab-name">Emergencias</div>
+        <div class="tab-desc">Fondo de emergencia con seguimiento</div>
+      </div>
+      <div class="tab-card">
+        <span class="tab-emoji">📐</span>
+        <div class="tab-name">Endeudamiento</div>
+        <div class="tab-desc">Capacidad de crédito y salud financiera</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
 <section>
-    <h2>Requisitos</h2>
-    <p>✔ Windows 10 o superior<br>
-       ✔ 4GB RAM recomendados<br>
-       ✔ Instalador oficial seguro</p>
+  <div class="container">
+    <div class="reveal" style="display:grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+      <div>
+        <span class="section-label">Tecnología</span>
+        <h2 class="section-title">Construido con<br>herramientas reales</h2>
+        <p class="section-sub">Sin Electron. Sin navegador embebido. Una app nativa de escritorio Windows construida en Python puro, rápida y ligera.</p>
+        <div class="tech-list">
+          <div class="tech-chip"><div class="tech-dot" style="background:#3B82F6"></div> Python 3.14</div>
+          <div class="tech-chip"><div class="tech-dot" style="background:#7C3AED"></div> CustomTkinter</div>
+          <div class="tech-chip"><div class="tech-dot" style="background:#F59E0B"></div> Matplotlib</div>
+          <div class="tech-chip"><div class="tech-dot" style="background:#10B981"></div> Pandas</div>
+          <div class="tech-chip"><div class="tech-dot" style="background:#EF4444"></div> ReportLab</div>
+          <div class="tech-chip"><div class="tech-dot" style="background:#06B6D4"></div> OpenPyXL</div>
+          <div class="tech-chip"><div class="tech-dot" style="background:#4285F4"></div> Google Drive API</div>
+          <div class="tech-chip"><div class="tech-dot" style="background:#8B5CF6"></div> PyInstaller</div>
+          <div class="tech-chip"><div class="tech-dot" style="background:#F97316"></div> Inno Setup</div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px 24px;">
+          <div style="font-size:.7rem; color:var(--dim); margin-bottom:6px; text-transform:uppercase; letter-spacing:.1em;">Datos guardados en</div>
+          <div style="font-family:'Courier New',monospace; font-size:.85rem; color:var(--success);">%LOCALAPPDATA%\FinancePro\</div>
+        </div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px 24px;">
+          <div style="font-size:.7rem; color:var(--dim); margin-bottom:6px; text-transform:uppercase; letter-spacing:.1em;">Formatos de datos</div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+            <span class="tag">CSV</span><span class="tag">JSON</span><span class="tag">ZIP backup</span><span class="tag">XLSX export</span><span class="tag">PDF export</span>
+          </div>
+        </div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px 24px;">
+          <div style="font-size:.7rem; color:var(--dim); margin-bottom:6px; text-transform:uppercase; letter-spacing:.1em;">Compatibilidad</div>
+          <div style="font-size:.85rem; color:var(--muted);">Windows 10 / 11 · 64-bit · Sin instalación de Python requerida</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- INSTALACIÓN -->
+<section id="instalacion" style="background: rgba(8,13,26,.5);">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Instalación</span>
+      <h2 class="section-title">Listo en 30 segundos</h2>
+      <p class="section-sub">Instalador de Windows estándar. Sin configuración manual. Sin Python requerido.</p>
+    </div>
+
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Descarga el instalador</div>
+          <div class="step-desc">Descarga <strong>FinancePro_Setup_v1.0.0.exe</strong> desde el enlace de abajo. El archivo pesa aproximadamente 80 MB.</div>
+          <a href="#" class="btn-primary" style="margin-top:14px; display:inline-flex;">⬇ Descargar FinancePro_Setup_v1.0.0.exe</a>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Ejecuta el instalador</div>
+          <div class="step-desc">Doble clic en el .exe. No se requieren permisos de administrador. Windows puede mostrar una advertencia de SmartScreen — haz clic en "Más información" y luego "Ejecutar de todas formas".</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Sigue el wizard</div>
+          <div class="step-desc">Elige si quieres acceso directo en el escritorio y si abrir la app al terminar. La instalación tarda menos de 1 minuto.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">¡Listo!</div>
+          <div class="step-desc">FinancePro aparece en tu escritorio, menú inicio y en <em>Agregar y quitar programas</em>. Tus datos se guardan en:</div>
+          <div class="code-block">C:\Users\TuNombre\AppData\Local\FinancePro\</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOOGLE DRIVE -->
+<section id="gdrive">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Respaldo en la nube</span>
+      <h2 class="section-title">Conecta Google Drive</h2>
+      <p class="section-sub">Opcional pero recomendado. Respalda todos tus datos con un clic y recupéralos desde cualquier backup anterior.</p>
+    </div>
+
+    <div class="gdrive-card reveal">
+      <div>
+        <h3 style="font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; margin-bottom:12px;">Configuración inicial</h3>
+        <p style="color:var(--muted); font-size:.88rem; margin-bottom:24px; line-height:1.7;">Solo necesitas hacer esto una vez. Requiere una cuenta de Google gratuita y crear un proyecto en Google Cloud Console.</p>
+        <div class="gdrive-steps">
+          <div class="gdrive-step">
+            <div class="gdrive-step-n">1</div>
+            <div class="gdrive-step-text">Ve a <strong>console.cloud.google.com</strong> e inicia sesión con tu cuenta Google</div>
+          </div>
+          <div class="gdrive-step">
+            <div class="gdrive-step-n">2</div>
+            <div class="gdrive-step-text">Crea un proyecto nuevo y activa la <strong>Google Drive API</strong></div>
+          </div>
+          <div class="gdrive-step">
+            <div class="gdrive-step-n">3</div>
+            <div class="gdrive-step-text">En <strong>APIs & Services → Credentials</strong> crea un OAuth 2.0 Client ID de tipo "Aplicación de escritorio"</div>
+          </div>
+          <div class="gdrive-step">
+            <div class="gdrive-step-n">4</div>
+            <div class="gdrive-step-text">En <strong>OAuth consent screen</strong> agrega tu correo como "Test user"</div>
+          </div>
+          <div class="gdrive-step">
+            <div class="gdrive-step-n">5</div>
+            <div class="gdrive-step-text">Descarga el JSON y guárdalo como <strong>credentials_gdrive.json</strong> en la carpeta de datos de la app</div>
+          </div>
+          <div class="gdrive-step">
+            <div class="gdrive-step-n">6</div>
+            <div class="gdrive-step-text">En FinancePro ve a <strong>⚙️ Config → Respaldo → Google Drive</strong> y haz clic en Conectar</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="background:rgba(66,133,244,.08); border:1px solid rgba(66,133,244,.2); border-radius:16px; padding:24px;">
+          <div style="font-size:2rem; margin-bottom:10px;">☁️</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; margin-bottom:8px;">Lo que se respalda</div>
+          <ul style="color:var(--muted); font-size:.83rem; line-height:2; list-style:none;">
+            <li>✓ movimientos.csv</li>
+            <li>✓ metas.csv · deudas.csv</li>
+            <li>✓ gastos_fijos.csv</li>
+            <li>✓ historial de todos los módulos</li>
+            <li>✓ fondo_emergencia.json</li>
+            <li>✓ evidencias de pago</li>
+          </ul>
+        </div>
+        <div style="background:rgba(16,185,129,.06); border:1px solid rgba(16,185,129,.2); border-radius:16px; padding:20px 24px;">
+          <div style="color:var(--success); font-weight:500; font-size:.85rem; margin-bottom:4px;">✓ Token guardado automáticamente</div>
+          <div style="color:var(--muted); font-size:.8rem; line-height:1.6;">Solo autorizas una vez. FinancePro renueva el token por su cuenta sin volver a pedirte login.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="reveal">
+    <span class="section-label">Empieza hoy</span>
+    <h2 class="section-title">Tu historial financiero<br><em style="font-style:normal; background:linear-gradient(135deg,#7C3AED,#A78BFA); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">empieza con un clic</em></h2>
+    <p style="color:var(--muted); font-size:1rem; max-width:460px; margin:20px auto 40px; font-weight:300;">Gratis. Sin suscripción. Sin cuenta requerida. Tus datos siempre en tu computadora.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary" style="font-size:1.05rem; padding:16px 36px;">⬇ Descargar gratis</a>
+      <a href="https://ko-fi.com/setracus" class="btn-secondary" target="_blank" rel="noopener">☕ Apoya en Ko-fi</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-    © 2026 FinancePro. Todos los derechos reservados. <br>
-    <a href="privacy-policy.html" class="footer-link">Política de Privacidad</a>
+  <div class="footer-left">
+    FinancePro
+    <span>© 2025 Setracus · Hecho con ♥ en Python</span>
+  </div>
+  <div class="footer-links">
+    <a href="#features">Funciones</a>
+    <a href="#modulos">Módulos</a>
+    <a href="#instalacion">Instalar</a>
+    <a href="#gdrive">Google Drive</a>
+    <a href="https://ko-fi.com/setracus" target="_blank" rel="noopener">Ko-fi ☕</a>
+  </div>
 </footer>
 
+<script>
+// ── Scroll reveal ──────────────────────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+
+// ── Animated bars in mockup ────────────────────────────────────────────────
+const barsEl = document.getElementById('bars');
+const data = [
+  { h: 60, c: '#7C3AED' },
+  { h: 85, c: '#10B981' },
+  { h: 45, c: '#EF4444' },
+  { h: 70, c: '#F59E0B' },
+  { h: 55, c: '#8B5CF6' },
+  { h: 90, c: '#10B981' },
+  { h: 40, c: '#EF4444' },
+];
+data.forEach(d => {
+  const bar = document.createElement('div');
+  bar.className = 'bar';
+  bar.style.cssText = `height:${d.h}%; background:${d.c}; opacity:.85;`;
+  barsEl.appendChild(bar);
+});
+
+// ── Smooth nav active state ────────────────────────────────────────────────
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--text)' : '';
+  });
+}, { passive: true });
+
+// ── Stats counter animation ────────────────────────────────────────────────
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const nums = e.target.querySelectorAll('.stat-num');
+    nums.forEach(n => {
+      const val = n.textContent;
+      // Animate only pure numbers
+      const num = parseFloat(val);
+      if (!isNaN(num) && !val.includes('+') && !val.includes('%')) return;
+      let start = 0;
+      const end = num;
+      const suffix = val.replace(/[\d.]/g, '');
+      const dur = 1200;
+      const step = (ts) => {
+        if (!start) start = ts;
+        const prog = Math.min((ts - start) / dur, 1);
+        n.textContent = Math.floor(prog * end) + suffix;
+        if (prog < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+    statsObserver.unobserve(e.target);
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stats-bar').forEach(el => statsObserver.observe(el));
+</script>
 </body>
 </html>
