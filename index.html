@@ -104,6 +104,35 @@ nav {
 }
 .nav-cta:hover { background: var(--primary-h) !important; color: #fff !important; }
 
+/* Ko-fi link under hero download buttons */
+.hero-kofi {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: .8rem;
+  color: var(--dim);
+  text-decoration: none;
+  transition: color .2s;
+}
+.hero-kofi:hover { color: var(--muted); }
+
+/* Language toggle in footer */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--dim);
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: .72rem;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all .2s;
+  letter-spacing: .03em;
+}
+.lang-toggle:hover { color: var(--muted); border-color: var(--dim); }
+
 /* ── HERO ── */
 .hero {
   position: relative;
@@ -782,13 +811,13 @@ footer {
     FinancePro
   </a>
   <ul class="nav-links">
-    <li><a href="#features">Funciones</a></li>
-    <li><a href="#modulos">Módulos</a></li>
-    <li><a href="#instalacion">Instalación</a></li>
+    <li><a href="#features" data-i18n="nav.features">Funciones</a></li>
+    <li><a href="#modulos" data-i18n="nav.modules">Módulos</a></li>
+    <li><a href="#instalacion" data-i18n="nav.install">Instalación</a></li>
     <li><a href="#gdrive">Google Drive</a></li>
-    <li><a href="privacy-policy.html">Privacidad</a></li>
-    <li><a href="terms-of-service.html">Términos</a></li>
-    <li><a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.0/FinancePro_Setup_v1.0.0.exe" class="nav-cta" download>⬇ Descargar</a></li>
+    <li><a href="privacy-policy.html" data-i18n="nav.privacy">Privacidad</a></li>
+    <li><a href="terms-of-service.html" data-i18n="nav.terms">Términos</a></li>
+    <li><a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.0/FinancePro_Setup_v1.0.0.exe" class="nav-cta" download data-i18n="nav.download">⬇ Descargar</a></li>
   </ul>
 </nav>
 
@@ -797,13 +826,14 @@ footer {
   <div class="hero-glow"></div>
   <div class="hero-grid"></div>
   <div>
-    <div class="hero-badge">by Setracus · Windows · Python 3.14</div>
-    <h1>Tu dinero,<br><em>bajo control.</em></h1>
-    <p>Control financiero personal completo — ingresos, metas, deudas, gastos fijos y respaldo en la nube. Todo desde una sola app de escritorio.</p>
+    <div class="hero-badge" data-i18n="hero.badge">by Setracus · Windows · Python 3.14</div>
+    <h1 data-i18n="hero.h1">Tu dinero,<br><em>bajo control.</em></h1>
+    <p data-i18n="hero.p">Control financiero personal completo — ingresos, metas, deudas, gastos fijos y respaldo en la nube. Todo desde una sola app de escritorio.</p>
     <div class="hero-actions">
-      <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.0/FinancePro_Setup_v1.0.0.exe" class="btn-primary" download>⬇ Descargar FinancePro</a>
-      <a href="#features" class="btn-secondary">Ver funciones →</a>
+      <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.0/FinancePro_Setup_v1.0.0.exe" class="btn-primary" download data-i18n="hero.download">⬇ Descargar FinancePro</a>
+      <a href="#features" class="btn-secondary" data-i18n="hero.features">Ver funciones →</a>
     </div>
+    <a href="https://ko-fi.com/setracus" target="_blank" rel="noopener" class="hero-kofi" data-i18n="nav.kofi">☕ Apoyar en Ko-fi</a>
 
     <!-- APP MOCKUP -->
     <div class="mockup-wrap">
@@ -818,32 +848,32 @@ footer {
         <div class="mockup-body">
           <div class="mini-stats">
             <div class="mini-card">
-              <div class="mini-card-label">Saldo total</div>
+              <div class="mini-card-label" data-i18n="mockup.balance">Saldo total</div>
               <div class="mini-card-value white">$4,820,000</div>
             </div>
             <div class="mini-card">
-              <div class="mini-card-label">Ingresos mes</div>
+              <div class="mini-card-label" data-i18n="mockup.income">Ingresos mes</div>
               <div class="mini-card-value green">$3,200,000</div>
             </div>
             <div class="mini-card">
-              <div class="mini-card-label">Gastos mes</div>
+              <div class="mini-card-label" data-i18n="mockup.expenses">Gastos mes</div>
               <div class="mini-card-value red">$1,640,000</div>
             </div>
             <div class="mini-card">
-              <div class="mini-card-label">Metas activas</div>
-              <div class="mini-card-value purple">4 metas</div>
+              <div class="mini-card-label" data-i18n="mockup.goals">Metas activas</div>
+              <div class="mini-card-value purple" data-i18n="mockup.goals.val">4 metas</div>
             </div>
           </div>
           <div class="mini-chart">
-            <div class="mini-chart-title">Distribución del mes</div>
+            <div class="mini-chart-title" data-i18n="mockup.chart">Distribución del mes</div>
             <div class="bars" id="bars"></div>
           </div>
           <div class="mini-tabs">
-            <div class="mini-tab active">💰 Nuevo</div>
-            <div class="mini-tab">📋 Historial</div>
-            <div class="mini-tab">🎯 Metas</div>
-            <div class="mini-tab">💳 Deudas</div>
-            <div class="mini-tab">📆 Gastos</div>
+            <div class="mini-tab active" data-i18n="mockup.tab1">💰 Nuevo</div>
+            <div class="mini-tab" data-i18n="mockup.tab2">📋 Historial</div>
+            <div class="mini-tab" data-i18n="mockup.tab3">🎯 Metas</div>
+            <div class="mini-tab" data-i18n="mockup.tab4">💳 Deudas</div>
+            <div class="mini-tab" data-i18n="mockup.tab5">📆 Gastos</div>
           </div>
         </div>
       </div>
@@ -855,19 +885,19 @@ footer {
 <div class="stats-bar reveal-stagger">
   <div class="stat-item">
     <div class="stat-num">10+</div>
-    <div class="stat-label">Módulos integrados</div>
+    <div class="stat-label" data-i18n="stats.modules">Módulos integrados</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">100%</div>
-    <div class="stat-label">Local · sin suscripción</div>
+    <div class="stat-label" data-i18n="stats.local">Local · sin suscripción</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">CSV</div>
-    <div class="stat-label">Datos siempre tuyos</div>
+    <div class="stat-label" data-i18n="stats.data">Datos siempre tuyos</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">GDrive</div>
-    <div class="stat-label">Respaldo en la nube</div>
+    <div class="stat-label" data-i18n="stats.backup">Respaldo en la nube</div>
   </div>
 </div>
 
@@ -875,110 +905,110 @@ footer {
 <section id="features">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">Funcionalidades</span>
-      <h2 class="section-title">Todo lo que necesitas<br>en un solo lugar</h2>
-      <p class="section-sub">Diseñado para ser completo sin ser complicado. Cada función está construida para el uso real, no para impresionar en una demo.</p>
+      <span class="section-label" data-i18n="features.label">Funcionalidades</span>
+      <h2 class="section-title" data-i18n="features.title">Todo lo que necesitas<br>en un solo lugar</h2>
+      <p class="section-sub" data-i18n="features.sub">Diseñado para ser completo sin ser complicado. Cada función está construida para el uso real, no para impresionar en una demo.</p>
     </div>
 
     <div class="features-grid reveal-stagger">
       <div class="feature-card">
         <div class="feature-icon fi-purple">📊</div>
-        <div class="feature-title">Historial completo</div>
-        <div class="feature-desc">Registra ingresos y gastos con categorías, fechas manuales y búsqueda. Edita o elimina cualquier movimiento con confirmación.</div>
+        <div class="feature-title" data-i18n="feat1.title">Historial completo</div>
+        <div class="feature-desc" data-i18n="feat1.desc">Registra ingresos y gastos con categorías, fechas manuales y búsqueda. Edita o elimina cualquier movimiento con confirmación.</div>
         <div class="feature-tags">
-          <span class="tag">Búsqueda</span>
-          <span class="tag">Filtros</span>
-          <span class="tag">Edición</span>
-          <span class="tag">Papelera</span>
+          <span class="tag" data-i18n="feat1.t1">Búsqueda</span>
+          <span class="tag" data-i18n="feat1.t2">Filtros</span>
+          <span class="tag" data-i18n="feat1.t3">Edición</span>
+          <span class="tag" data-i18n="feat1.t4">Papelera</span>
         </div>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon fi-green">🎯</div>
-        <div class="feature-title">Metas de ahorro</div>
-        <div class="feature-desc">Crea metas con objetivo, fecha límite y aportes progresivos. Visualiza el avance con barras de progreso y barra de historial completo.</div>
+        <div class="feature-title" data-i18n="feat2.title">Metas de ahorro</div>
+        <div class="feature-desc" data-i18n="feat2.desc">Crea metas con objetivo, fecha límite y aportes progresivos. Visualiza el avance con barras de progreso y barra de historial completo.</div>
         <div class="feature-tags">
-          <span class="tag">Progreso</span>
-          <span class="tag">Aportes</span>
-          <span class="tag">Retiros</span>
-          <span class="tag">Historial</span>
+          <span class="tag" data-i18n="feat2.t1">Progreso</span>
+          <span class="tag" data-i18n="feat2.t2">Aportes</span>
+          <span class="tag" data-i18n="feat2.t3">Retiros</span>
+          <span class="tag" data-i18n="feat2.t4">Historial</span>
         </div>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon fi-red">💳</div>
-        <div class="feature-title">Control de deudas</div>
-        <div class="feature-desc">Lleva el registro de cada deuda con acreedores, montos, abonos y fecha límite. Visualiza el progreso de pago en tiempo real.</div>
+        <div class="feature-title" data-i18n="feat3.title">Control de deudas</div>
+        <div class="feature-desc" data-i18n="feat3.desc">Lleva el registro de cada deuda con acreedores, montos, abonos y fecha límite. Visualiza el progreso de pago en tiempo real.</div>
         <div class="feature-tags">
-          <span class="tag">Abonos</span>
-          <span class="tag">Historial</span>
-          <span class="tag">Fecha límite</span>
+          <span class="tag" data-i18n="feat3.t1">Abonos</span>
+          <span class="tag" data-i18n="feat3.t2">Historial</span>
+          <span class="tag" data-i18n="feat3.t3">Fecha límite</span>
         </div>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon fi-orange">📆</div>
-        <div class="feature-title">Gastos fijos mensuales</div>
-        <div class="feature-desc">Arriendo, Netflix, servicios. Marca pagos con fecha, agrega observaciones, deshace pagos y proyecta el próximo mes automáticamente.</div>
+        <div class="feature-title" data-i18n="feat4.title">Gastos fijos mensuales</div>
+        <div class="feature-desc" data-i18n="feat4.desc">Arriendo, Netflix, servicios. Marca pagos con fecha, agrega observaciones, deshace pagos y proyecta el próximo mes automáticamente.</div>
         <div class="feature-tags">
-          <span class="tag">Proyección</span>
-          <span class="tag">Deshacer pago</span>
-          <span class="tag">Observaciones</span>
+          <span class="tag" data-i18n="feat4.t1">Proyección</span>
+          <span class="tag" data-i18n="feat4.t2">Deshacer pago</span>
+          <span class="tag" data-i18n="feat4.t3">Observaciones</span>
         </div>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon fi-blue">🛡️</div>
-        <div class="feature-title">Fondo de emergencia</div>
-        <div class="feature-desc">Gestiona tu colchón financiero con depósitos, retiros y seguimiento del objetivo. Calcula cuántos meses puedes cubrir tus gastos.</div>
+        <div class="feature-title" data-i18n="feat5.title">Fondo de emergencia</div>
+        <div class="feature-desc" data-i18n="feat5.desc">Gestiona tu colchón financiero con depósitos, retiros y seguimiento del objetivo. Calcula cuántos meses puedes cubrir tus gastos.</div>
         <div class="feature-tags">
-          <span class="tag">Depósitos</span>
-          <span class="tag">Retiros</span>
-          <span class="tag">Objetivo</span>
+          <span class="tag" data-i18n="feat5.t1">Depósitos</span>
+          <span class="tag" data-i18n="feat5.t2">Retiros</span>
+          <span class="tag" data-i18n="feat5.t3">Objetivo</span>
         </div>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon fi-teal">🧾</div>
-        <div class="feature-title">Evidencias de pago</div>
-        <div class="feature-desc">Adjunta imágenes, PDFs o cualquier archivo como comprobante de cada pago. Organizado por categoría con vista rápida integrada.</div>
+        <div class="feature-title" data-i18n="feat6.title">Evidencias de pago</div>
+        <div class="feature-desc" data-i18n="feat6.desc">Adjunta imágenes, PDFs o cualquier archivo como comprobante de cada pago. Organizado por categoría con vista rápida integrada.</div>
         <div class="feature-tags">
-          <span class="tag">Imágenes</span>
+          <span class="tag" data-i18n="feat6.t1">Imágenes</span>
           <span class="tag">PDF</span>
-          <span class="tag">Archivos</span>
+          <span class="tag" data-i18n="feat6.t3">Archivos</span>
         </div>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon fi-purple">📈</div>
-        <div class="feature-title">Gráficos y tendencias</div>
-        <div class="feature-desc">Visualiza tu distribución de gastos en torta, barras comparativas por mes y tendencias de ahorro a lo largo del tiempo.</div>
+        <div class="feature-title" data-i18n="feat7.title">Gráficos y tendencias</div>
+        <div class="feature-desc" data-i18n="feat7.desc">Visualiza tu distribución de gastos en torta, barras comparativas por mes y tendencias de ahorro a lo largo del tiempo.</div>
         <div class="feature-tags">
-          <span class="tag">Distribución</span>
-          <span class="tag">Tendencias</span>
+          <span class="tag" data-i18n="feat7.t1">Distribución</span>
+          <span class="tag" data-i18n="feat7.t2">Tendencias</span>
           <span class="tag">Matplotlib</span>
         </div>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon fi-green">📐</div>
-        <div class="feature-title">Capacidad de endeudamiento</div>
-        <div class="feature-desc">Calcula automáticamente cuánto puedes endeudarte según tu ingreso y gastos actuales. Indicadores de salud financiera en tiempo real.</div>
+        <div class="feature-title" data-i18n="feat8.title">Capacidad de endeudamiento</div>
+        <div class="feature-desc" data-i18n="feat8.desc">Calcula automáticamente cuánto puedes endeudarte según tu ingreso y gastos actuales. Indicadores de salud financiera en tiempo real.</div>
         <div class="feature-tags">
-          <span class="tag">Indicadores</span>
-          <span class="tag">Límites</span>
-          <span class="tag">Salud financiera</span>
+          <span class="tag" data-i18n="feat8.t1">Indicadores</span>
+          <span class="tag" data-i18n="feat8.t2">Límites</span>
+          <span class="tag" data-i18n="feat8.t3">Salud financiera</span>
         </div>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon fi-orange">☁️</div>
-        <div class="feature-title">Respaldo Google Drive</div>
-        <div class="feature-desc">Conecta tu cuenta de Google y respalda todos tus datos en la nube con un clic. Restaura desde cualquier backup anterior.</div>
+        <div class="feature-title" data-i18n="feat9.title">Respaldo Google Drive</div>
+        <div class="feature-desc" data-i18n="feat9.desc">Conecta tu cuenta de Google y respalda todos tus datos en la nube con un clic. Restaura desde cualquier backup anterior.</div>
         <div class="feature-tags">
           <span class="tag">OAuth 2.0</span>
           <span class="tag">Auto-backup</span>
-          <span class="tag">Restaurar</span>
+          <span class="tag" data-i18n="feat9.t3">Restaurar</span>
         </div>
       </div>
     </div>
@@ -989,61 +1019,61 @@ footer {
 <section id="modulos" class="tabs-section">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">Módulos</span>
-      <h2 class="section-title">10 pestañas,<br>todo conectado</h2>
-      <p class="section-sub">Cada módulo comparte los mismos datos. Un pago en Gastos Fijos actualiza automáticamente el historial general.</p>
+      <span class="section-label" data-i18n="modules.label">Módulos</span>
+      <h2 class="section-title" data-i18n="modules.title">10 pestañas,<br>todo conectado</h2>
+      <p class="section-sub" data-i18n="modules.sub">Cada módulo comparte los mismos datos. Un pago en Gastos Fijos actualiza automáticamente el historial general.</p>
     </div>
 
     <div class="tabs-showcase reveal-stagger">
       <div class="tab-card">
         <span class="tab-emoji">💰</span>
-        <div class="tab-name">Nuevo movimiento</div>
-        <div class="tab-desc">Registra ingresos y gastos rápidamente</div>
+        <div class="tab-name" data-i18n="mod1.name">Nuevo movimiento</div>
+        <div class="tab-desc" data-i18n="mod1.desc">Registra ingresos y gastos rápidamente</div>
       </div>
       <div class="tab-card">
         <span class="tab-emoji">📋</span>
-        <div class="tab-name">Historial</div>
-        <div class="tab-desc">Todos los movimientos con filtros y búsqueda</div>
+        <div class="tab-name" data-i18n="mod2.name">Historial</div>
+        <div class="tab-desc" data-i18n="mod2.desc">Todos los movimientos con filtros y búsqueda</div>
       </div>
       <div class="tab-card">
         <span class="tab-emoji">📊</span>
-        <div class="tab-name">Distribución</div>
-        <div class="tab-desc">Gráfico de torta por categorías</div>
+        <div class="tab-name" data-i18n="mod3.name">Distribución</div>
+        <div class="tab-desc" data-i18n="mod3.desc">Gráfico de torta por categorías</div>
       </div>
       <div class="tab-card">
         <span class="tab-emoji">📈</span>
-        <div class="tab-name">Tendencias</div>
-        <div class="tab-desc">Evolución mensual de ingresos vs gastos</div>
+        <div class="tab-name" data-i18n="mod4.name">Tendencias</div>
+        <div class="tab-desc" data-i18n="mod4.desc">Evolución mensual de ingresos vs gastos</div>
       </div>
       <div class="tab-card">
         <span class="tab-emoji">🎯</span>
-        <div class="tab-name">Metas</div>
-        <div class="tab-desc">Ahorro con objetivo y progreso visual</div>
+        <div class="tab-name" data-i18n="mod5.name">Metas</div>
+        <div class="tab-desc" data-i18n="mod5.desc">Ahorro con objetivo y progreso visual</div>
       </div>
       <div class="tab-card">
         <span class="tab-emoji">💳</span>
-        <div class="tab-name">Deudas</div>
-        <div class="tab-desc">Seguimiento de deudas y abonos</div>
+        <div class="tab-name" data-i18n="mod6.name">Deudas</div>
+        <div class="tab-desc" data-i18n="mod6.desc">Seguimiento de deudas y abonos</div>
       </div>
       <div class="tab-card">
         <span class="tab-emoji">📆</span>
-        <div class="tab-name">Gastos Fijos</div>
-        <div class="tab-desc">Pagos recurrentes y proyección mensual</div>
+        <div class="tab-name" data-i18n="mod7.name">Gastos Fijos</div>
+        <div class="tab-desc" data-i18n="mod7.desc">Pagos recurrentes y proyección mensual</div>
       </div>
       <div class="tab-card">
         <span class="tab-emoji">🧾</span>
-        <div class="tab-name">Evidencias</div>
-        <div class="tab-desc">Comprobantes de pago adjuntos</div>
+        <div class="tab-name" data-i18n="mod8.name">Evidencias</div>
+        <div class="tab-desc" data-i18n="mod8.desc">Comprobantes de pago adjuntos</div>
       </div>
       <div class="tab-card">
         <span class="tab-emoji">🛡️</span>
-        <div class="tab-name">Emergencias</div>
-        <div class="tab-desc">Fondo de emergencia con seguimiento</div>
+        <div class="tab-name" data-i18n="mod9.name">Emergencias</div>
+        <div class="tab-desc" data-i18n="mod9.desc">Fondo de emergencia con seguimiento</div>
       </div>
       <div class="tab-card">
         <span class="tab-emoji">📐</span>
-        <div class="tab-name">Endeudamiento</div>
-        <div class="tab-desc">Capacidad de crédito y salud financiera</div>
+        <div class="tab-name" data-i18n="mod10.name">Endeudamiento</div>
+        <div class="tab-desc" data-i18n="mod10.desc">Capacidad de crédito y salud financiera</div>
       </div>
     </div>
   </div>
@@ -1054,9 +1084,9 @@ footer {
   <div class="container">
     <div class="reveal" style="display:grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
       <div>
-        <span class="section-label">Tecnología</span>
-        <h2 class="section-title">Construido con<br>herramientas reales</h2>
-        <p class="section-sub">Sin Electron. Sin navegador embebido. Una app nativa de escritorio Windows construida en Python puro, rápida y ligera.</p>
+        <span class="section-label" data-i18n="tech.label">Tecnología</span>
+        <h2 class="section-title" data-i18n="tech.title">Construido con<br>herramientas reales</h2>
+        <p class="section-sub" data-i18n="tech.sub">Sin Electron. Sin navegador embebido. Una app nativa de escritorio Windows construida en Python puro, rápida y ligera.</p>
         <div class="tech-list">
           <div class="tech-chip"><div class="tech-dot" style="background:#3B82F6"></div> Python 3.14</div>
           <div class="tech-chip"><div class="tech-dot" style="background:#7C3AED"></div> CustomTkinter</div>
@@ -1071,18 +1101,18 @@ footer {
       </div>
       <div style="display:flex; flex-direction:column; gap:14px;">
         <div style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px 24px;">
-          <div style="font-size:.7rem; color:var(--dim); margin-bottom:6px; text-transform:uppercase; letter-spacing:.1em;">Datos guardados en</div>
+          <div style="font-size:.7rem; color:var(--dim); margin-bottom:6px; text-transform:uppercase; letter-spacing:.1em;" data-i18n="tech.savedIn">Datos guardados en</div>
           <div style="font-family:'Courier New',monospace; font-size:.85rem; color:var(--success);">%LOCALAPPDATA%\FinancePro\</div>
         </div>
         <div style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px 24px;">
-          <div style="font-size:.7rem; color:var(--dim); margin-bottom:6px; text-transform:uppercase; letter-spacing:.1em;">Formatos de datos</div>
+          <div style="font-size:.7rem; color:var(--dim); margin-bottom:6px; text-transform:uppercase; letter-spacing:.1em;" data-i18n="tech.formats">Formatos de datos</div>
           <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
             <span class="tag">CSV</span><span class="tag">JSON</span><span class="tag">ZIP backup</span><span class="tag">XLSX export</span><span class="tag">PDF export</span>
           </div>
         </div>
         <div style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px 24px;">
-          <div style="font-size:.7rem; color:var(--dim); margin-bottom:6px; text-transform:uppercase; letter-spacing:.1em;">Compatibilidad</div>
-          <div style="font-size:.85rem; color:var(--muted);">Windows 10 / 11 · 64-bit · Sin instalación de Python requerida</div>
+          <div style="font-size:.7rem; color:var(--dim); margin-bottom:6px; text-transform:uppercase; letter-spacing:.1em;" data-i18n="tech.compat">Compatibilidad</div>
+          <div style="font-size:.85rem; color:var(--muted);" data-i18n="tech.compatVal">Windows 10 / 11 · 64-bit · Sin instalación de Python requerida</div>
         </div>
       </div>
     </div>
@@ -1093,39 +1123,39 @@ footer {
 <section id="instalacion" style="background: rgba(8,13,26,.5);">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">Instalación</span>
-      <h2 class="section-title">Listo en 30 segundos</h2>
-      <p class="section-sub">Instalador de Windows estándar. Sin configuración manual. Sin Python requerido.</p>
+      <span class="section-label" data-i18n="install.label">Instalación</span>
+      <h2 class="section-title" data-i18n="install.title">Listo en 30 segundos</h2>
+      <p class="section-sub" data-i18n="install.sub">Instalador de Windows estándar. Sin configuración manual. Sin Python requerido.</p>
     </div>
 
     <div class="steps reveal">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-content">
-          <div class="step-title">Descarga el instalador</div>
-          <div class="step-desc">Descarga <strong>FinancePro_Setup_v1.0.0.exe</strong> desde el enlace de abajo. El archivo pesa aproximadamente 80 MB.</div>
-          <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.0/FinancePro_Setup_v1.0.0.exe" class="btn-primary" style="margin-top:14px; display:inline-flex;" download>⬇ Descargar FinancePro_Setup_v1.0.0.exe</a>
+          <div class="step-title" data-i18n="install.step1.title">Descarga el instalador</div>
+          <div class="step-desc" data-i18n="install.step1.desc">Descarga <strong>FinancePro_Setup_v1.0.0.exe</strong> desde el enlace de abajo. El archivo pesa aproximadamente 80 MB.</div>
+          <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.0/FinancePro_Setup_v1.0.0.exe" class="btn-primary" style="margin-top:14px; display:inline-flex;" download data-i18n="install.step1.btn">⬇ Descargar FinancePro_Setup_v1.0.0.exe</a>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-content">
-          <div class="step-title">Ejecuta el instalador</div>
-          <div class="step-desc">Doble clic en el .exe. No se requieren permisos de administrador. Windows puede mostrar una advertencia de SmartScreen — haz clic en "Más información" y luego "Ejecutar de todas formas".</div>
+          <div class="step-title" data-i18n="install.step2.title">Ejecuta el instalador</div>
+          <div class="step-desc" data-i18n="install.step2.desc">Doble clic en el .exe. No se requieren permisos de administrador. Windows puede mostrar una advertencia de SmartScreen — haz clic en "Más información" y luego "Ejecutar de todas formas".</div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-content">
-          <div class="step-title">Sigue el wizard</div>
-          <div class="step-desc">Elige si quieres acceso directo en el escritorio y si abrir la app al terminar. La instalación tarda menos de 1 minuto.</div>
+          <div class="step-title" data-i18n="install.step3.title">Sigue el wizard</div>
+          <div class="step-desc" data-i18n="install.step3.desc">Elige si quieres acceso directo en el escritorio y si abrir la app al terminar. La instalación tarda menos de 1 minuto.</div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-content">
-          <div class="step-title">¡Listo!</div>
-          <div class="step-desc">FinancePro aparece en tu escritorio, menú inicio y en <em>Agregar y quitar programas</em>. Tus datos se guardan en:</div>
+          <div class="step-title" data-i18n="install.step4.title">¡Listo!</div>
+          <div class="step-desc" data-i18n="install.step4.desc">FinancePro aparece en tu escritorio, menú inicio y en <em>Agregar y quitar programas</em>. Tus datos se guardan en:</div>
           <div class="code-block">C:\Users\TuNombre\AppData\Local\FinancePro\</div>
         </div>
       </div>
@@ -1137,49 +1167,49 @@ footer {
 <section id="gdrive">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">Respaldo en la nube</span>
-      <h2 class="section-title">Conecta Google Drive</h2>
-      <p class="section-sub">Opcional pero recomendado. Respalda todos tus datos con un clic y recupéralos desde cualquier backup anterior. Sin configuración técnica.</p>
+      <span class="section-label" data-i18n="gdrive.label">Respaldo en la nube</span>
+      <h2 class="section-title" data-i18n="gdrive.title">Conecta Google Drive</h2>
+      <p class="section-sub" data-i18n="gdrive.sub">Opcional pero recomendado. Respalda todos tus datos con un clic y recupéralos desde cualquier backup anterior. Sin configuración técnica.</p>
     </div>
 
     <div class="gdrive-card reveal">
       <div>
-        <h3 style="font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; margin-bottom:12px;">Conectar en 3 pasos</h3>
-        <p style="color:var(--muted); font-size:.88rem; margin-bottom:24px; line-height:1.7;">Solo necesitas una cuenta de Google gratuita. No requiere configuración técnica ni crear proyectos.</p>
+        <h3 style="font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; margin-bottom:12px;" data-i18n="gdrive.cardTitle">Conectar en 3 pasos</h3>
+        <p style="color:var(--muted); font-size:.88rem; margin-bottom:24px; line-height:1.7;" data-i18n="gdrive.cardSub">Solo necesitas una cuenta de Google gratuita. No requiere configuración técnica ni crear proyectos.</p>
         <div class="gdrive-steps">
           <div class="gdrive-step">
             <div class="gdrive-step-n">1</div>
-            <div class="gdrive-step-text">En FinancePro ve a <strong>⚙️ Config → Respaldo → Google Drive</strong> y haz clic en <strong>Conectar con Google</strong></div>
+            <div class="gdrive-step-text" data-i18n="gdrive.s1">En FinancePro ve a <strong>⚙️ Config → Respaldo → Google Drive</strong> y haz clic en <strong>Conectar con Google</strong></div>
           </div>
           <div class="gdrive-step">
             <div class="gdrive-step-n">2</div>
-            <div class="gdrive-step-text">Se abrirá el navegador con la pantalla de inicio de sesión de Google. <strong>Inicia sesión</strong> con tu cuenta y otorga el permiso solicitado para acceder a Google Drive</div>
+            <div class="gdrive-step-text" data-i18n="gdrive.s2">Se abrirá el navegador con la pantalla de inicio de sesión de Google. <strong>Inicia sesión</strong> con tu cuenta y otorga el permiso solicitado para acceder a Google Drive</div>
           </div>
           <div class="gdrive-step">
             <div class="gdrive-step-n">3</div>
-            <div class="gdrive-step-text">¡Listo! FinancePro guarda la sesión automáticamente. Desde ahora puedes hacer <strong>respaldo y restauración</strong> con un solo clic desde la app</div>
+            <div class="gdrive-step-text" data-i18n="gdrive.s3">¡Listo! FinancePro guarda la sesión automáticamente. Desde ahora puedes hacer <strong>respaldo y restauración</strong> con un solo clic desde la app</div>
           </div>
         </div>
-        <div style="margin-top:20px; padding:14px 18px; background:rgba(66,133,244,.07); border:1px solid rgba(66,133,244,.18); border-radius:12px; font-size:.82rem; color:var(--muted); line-height:1.6;">
+        <div style="margin-top:20px; padding:14px 18px; background:rgba(66,133,244,.07); border:1px solid rgba(66,133,244,.18); border-radius:12px; font-size:.82rem; color:var(--muted); line-height:1.6;" data-i18n="gdrive.note">
           🔒 <strong style="color:var(--text);">Seguro y privado:</strong> FinancePro solo accede a la carpeta que crea dentro de tu Drive. Tus otros archivos nunca son visibles ni modificados.
         </div>
       </div>
       <div style="display:flex; flex-direction:column; gap:16px;">
         <div style="background:rgba(66,133,244,.08); border:1px solid rgba(66,133,244,.2); border-radius:16px; padding:24px;">
           <div style="font-size:2rem; margin-bottom:10px;">☁️</div>
-          <div style="font-family:'Syne',sans-serif; font-weight:700; margin-bottom:8px;">Lo que se respalda</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; margin-bottom:8px;" data-i18n="gdrive.backupTitle">Lo que se respalda</div>
           <ul style="color:var(--muted); font-size:.83rem; line-height:2; list-style:none;">
             <li>✓ movimientos.csv</li>
             <li>✓ metas.csv · deudas.csv</li>
             <li>✓ gastos_fijos.csv</li>
-            <li>✓ historial de todos los módulos</li>
+            <li data-i18n="gdrive.backupItem">✓ historial de todos los módulos</li>
             <li>✓ fondo_emergencia.json</li>
-            <li>✓ evidencias de pago</li>
+            <li data-i18n="gdrive.backupEvid">✓ evidencias de pago</li>
           </ul>
         </div>
         <div style="background:rgba(16,185,129,.06); border:1px solid rgba(16,185,129,.2); border-radius:16px; padding:20px 24px;">
-          <div style="color:var(--success); font-weight:500; font-size:.85rem; margin-bottom:4px;">✓ Sesión guardada automáticamente</div>
-          <div style="color:var(--muted); font-size:.8rem; line-height:1.6;">Autorizas una sola vez. FinancePro renueva la sesión en segundo plano sin pedirte login de nuevo.</div>
+          <div style="color:var(--success); font-weight:500; font-size:.85rem; margin-bottom:4px;" data-i18n="gdrive.autoToken">✓ Sesión guardada automáticamente</div>
+          <div style="color:var(--muted); font-size:.8rem; line-height:1.6;" data-i18n="gdrive.autoTokenDesc">Autorizas una sola vez. FinancePro renueva la sesión en segundo plano sin pedirte login de nuevo.</div>
         </div>
       </div>
     </div>
@@ -1190,12 +1220,12 @@ footer {
 <section class="cta-section">
   <div class="cta-glow"></div>
   <div class="reveal">
-    <span class="section-label">Empieza hoy</span>
-    <h2 class="section-title">Tu historial financiero<br><em style="font-style:normal; background:linear-gradient(135deg,#7C3AED,#A78BFA); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">empieza con un clic</em></h2>
-    <p style="color:var(--muted); font-size:1rem; max-width:460px; margin:20px auto 40px; font-weight:300;">Gratis. Sin suscripción. Sin cuenta requerida. Tus datos siempre en tu computadora.</p>
+    <span class="section-label" data-i18n="cta.label">Empieza hoy</span>
+    <h2 class="section-title" data-i18n="cta.title">Tu historial financiero<br><em style="font-style:normal; background:linear-gradient(135deg,#7C3AED,#A78BFA); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">empieza con un clic</em></h2>
+    <p style="color:var(--muted); font-size:1rem; max-width:460px; margin:20px auto 40px; font-weight:300;" data-i18n="cta.sub">Gratis. Sin suscripción. Sin cuenta requerida. Tus datos siempre en tu computadora.</p>
     <div class="hero-actions">
-      <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.0/FinancePro_Setup_v1.0.0.exe" class="btn-primary" style="font-size:1.05rem; padding:16px 36px;" download>⬇ Descargar gratis</a>
-      <a href="https://ko-fi.com/setracus" class="btn-secondary" target="_blank" rel="noopener">☕ Apoya en Ko-fi</a>
+      <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.0/FinancePro_Setup_v1.0.0.exe" class="btn-primary" style="font-size:1.05rem; padding:16px 36px;" download data-i18n="cta.download">⬇ Descargar gratis</a>
+      <a href="https://ko-fi.com/setracus" class="btn-secondary" target="_blank" rel="noopener" data-i18n="cta.kofi">☕ Apoya en Ko-fi</a>
     </div>
   </div>
 </section>
@@ -1204,16 +1234,17 @@ footer {
 <footer>
   <div class="footer-left">
     FinancePro
-    <span>© 2025 Setracus · Hecho con ♥ en Python</span>
+    <span data-i18n="footer.copy">© 2025 Setracus · Hecho con ♥ en Python</span>
   </div>
   <div class="footer-links">
-    <a href="#features">Funciones</a>
-    <a href="#modulos">Módulos</a>
-    <a href="#instalacion">Instalar</a>
+    <a href="#features" data-i18n="nav.features">Funciones</a>
+    <a href="#modulos" data-i18n="nav.modules">Módulos</a>
+    <a href="#instalacion" data-i18n="nav.install">Instalar</a>
     <a href="#gdrive">Google Drive</a>
-    <a href="privacy-policy.html">Política de Privacidad</a>
-    <a href="terms-of-service.html">Términos de Servicio</a>
+    <a href="privacy-policy.html" data-i18n="footer.privacy">Política de Privacidad</a>
+    <a href="terms-of-service.html" data-i18n="footer.terms">Términos de Servicio</a>
     <a href="https://ko-fi.com/setracus" target="_blank" rel="noopener">Ko-fi ☕</a>
+    <button class="lang-toggle" id="langToggle" onclick="toggleLang()">🌐 EN</button>
   </div>
 </footer>
 
@@ -1288,6 +1319,224 @@ const statsObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 document.querySelectorAll('.stats-bar').forEach(el => statsObserver.observe(el));
+</script>
+
+<script>
+// ── i18n Translation System ────────────────────────────────────────────────
+const translations = {
+  es: {
+    // Nav
+    'nav.features':'Funciones','nav.modules':'Módulos','nav.install':'Instalación',
+    'nav.privacy':'Privacidad','nav.terms':'Términos','nav.download':'⬇ Descargar',
+    'nav.kofi':'☕ Apoyar en Ko-fi',
+    // Hero
+    'hero.badge':'by Setracus · Windows · Python 3.14',
+    'hero.h1':'Tu dinero,<br><em>bajo control.</em>',
+    'hero.p':'Control financiero personal completo — ingresos, metas, deudas, gastos fijos y respaldo en la nube. Todo desde una sola app de escritorio.',
+    'hero.download':'⬇ Descargar FinancePro','hero.features':'Ver funciones →',
+    // Mockup
+    'mockup.balance':'Saldo total','mockup.income':'Ingresos mes','mockup.expenses':'Gastos mes',
+    'mockup.goals':'Metas activas','mockup.goals.val':'4 metas','mockup.chart':'Distribución del mes',
+    'mockup.tab1':'💰 Nuevo','mockup.tab2':'📋 Historial','mockup.tab3':'🎯 Metas',
+    'mockup.tab4':'💳 Deudas','mockup.tab5':'📆 Gastos',
+    // Stats
+    'stats.modules':'Módulos integrados','stats.local':'Local · sin suscripción',
+    'stats.data':'Datos siempre tuyos','stats.backup':'Respaldo en la nube',
+    // Features section
+    'features.label':'Funcionalidades','features.title':'Todo lo que necesitas<br>en un solo lugar',
+    'features.sub':'Diseñado para ser completo sin ser complicado. Cada función está construida para el uso real, no para impresionar en una demo.',
+    // Feature cards
+    'feat1.title':'Historial completo','feat1.desc':'Registra ingresos y gastos con categorías, fechas manuales y búsqueda. Edita o elimina cualquier movimiento con confirmación.',
+    'feat1.t1':'Búsqueda','feat1.t2':'Filtros','feat1.t3':'Edición','feat1.t4':'Papelera',
+    'feat2.title':'Metas de ahorro','feat2.desc':'Crea metas con objetivo, fecha límite y aportes progresivos. Visualiza el avance con barras de progreso y barra de historial completo.',
+    'feat2.t1':'Progreso','feat2.t2':'Aportes','feat2.t3':'Retiros','feat2.t4':'Historial',
+    'feat3.title':'Control de deudas','feat3.desc':'Lleva el registro de cada deuda con acreedores, montos, abonos y fecha límite. Visualiza el progreso de pago en tiempo real.',
+    'feat3.t1':'Abonos','feat3.t2':'Historial','feat3.t3':'Fecha límite',
+    'feat4.title':'Gastos fijos mensuales','feat4.desc':'Arriendo, Netflix, servicios. Marca pagos con fecha, agrega observaciones, deshace pagos y proyecta el próximo mes automáticamente.',
+    'feat4.t1':'Proyección','feat4.t2':'Deshacer pago','feat4.t3':'Observaciones',
+    'feat5.title':'Fondo de emergencia','feat5.desc':'Gestiona tu colchón financiero con depósitos, retiros y seguimiento del objetivo. Calcula cuántos meses puedes cubrir tus gastos.',
+    'feat5.t1':'Depósitos','feat5.t2':'Retiros','feat5.t3':'Objetivo',
+    'feat6.title':'Evidencias de pago','feat6.desc':'Adjunta imágenes, PDFs o cualquier archivo como comprobante de cada pago. Organizado por categoría con vista rápida integrada.',
+    'feat6.t1':'Imágenes','feat6.t3':'Archivos',
+    'feat7.title':'Gráficos y tendencias','feat7.desc':'Visualiza tu distribución de gastos en torta, barras comparativas por mes y tendencias de ahorro a lo largo del tiempo.',
+    'feat7.t1':'Distribución','feat7.t2':'Tendencias',
+    'feat8.title':'Capacidad de endeudamiento','feat8.desc':'Calcula automáticamente cuánto puedes endeudarte según tu ingreso y gastos actuales. Indicadores de salud financiera en tiempo real.',
+    'feat8.t1':'Indicadores','feat8.t2':'Límites','feat8.t3':'Salud financiera',
+    'feat9.title':'Respaldo Google Drive','feat9.desc':'Conecta tu cuenta de Google y respalda todos tus datos en la nube con un clic. Restaura desde cualquier backup anterior.',
+    'feat9.t3':'Restaurar',
+    // Modules
+    'modules.label':'Módulos','modules.title':'10 pestañas,<br>todo conectado',
+    'modules.sub':'Cada módulo comparte los mismos datos. Un pago en Gastos Fijos actualiza automáticamente el historial general.',
+    'mod1.name':'Nuevo movimiento','mod1.desc':'Registra ingresos y gastos rápidamente',
+    'mod2.name':'Historial','mod2.desc':'Todos los movimientos con filtros y búsqueda',
+    'mod3.name':'Distribución','mod3.desc':'Gráfico de torta por categorías',
+    'mod4.name':'Tendencias','mod4.desc':'Evolución mensual de ingresos vs gastos',
+    'mod5.name':'Metas','mod5.desc':'Ahorro con objetivo y progreso visual',
+    'mod6.name':'Deudas','mod6.desc':'Seguimiento de deudas y abonos',
+    'mod7.name':'Gastos Fijos','mod7.desc':'Pagos recurrentes y proyección mensual',
+    'mod8.name':'Evidencias','mod8.desc':'Comprobantes de pago adjuntos',
+    'mod9.name':'Emergencias','mod9.desc':'Fondo de emergencia con seguimiento',
+    'mod10.name':'Endeudamiento','mod10.desc':'Capacidad de crédito y salud financiera',
+    // Tech
+    'tech.label':'Tecnología','tech.title':'Construido con<br>herramientas reales',
+    'tech.sub':'Sin Electron. Sin navegador embebido. Una app nativa de escritorio Windows construida en Python puro, rápida y ligera.',
+    'tech.savedIn':'Datos guardados en','tech.formats':'Formatos de datos',
+    'tech.compat':'Compatibilidad','tech.compatVal':'Windows 10 / 11 · 64-bit · Sin instalación de Python requerida',
+    // Install
+    'install.label':'Instalación','install.title':'Listo en 30 segundos',
+    'install.sub':'Instalador de Windows estándar. Sin configuración manual. Sin Python requerido.',
+    'install.step1.title':'Descarga el instalador',
+    'install.step1.desc':'Descarga <strong>FinancePro_Setup_v1.0.0.exe</strong> desde el enlace de abajo. El archivo pesa aproximadamente 80 MB.',
+    'install.step1.btn':'⬇ Descargar FinancePro_Setup_v1.0.0.exe',
+    'install.step2.title':'Ejecuta el instalador',
+    'install.step2.desc':'Doble clic en el .exe. No se requieren permisos de administrador. Windows puede mostrar una advertencia de SmartScreen — haz clic en "Más información" y luego "Ejecutar de todas formas".',
+    'install.step3.title':'Sigue el wizard',
+    'install.step3.desc':'Elige si quieres acceso directo en el escritorio y si abrir la app al terminar. La instalación tarda menos de 1 minuto.',
+    'install.step4.title':'¡Listo!',
+    'install.step4.desc':'FinancePro aparece en tu escritorio, menú inicio y en <em>Agregar y quitar programas</em>. Tus datos se guardan en:',
+    // GDrive
+    'gdrive.label':'Respaldo en la nube','gdrive.title':'Conecta Google Drive',
+    'gdrive.sub':'Opcional pero recomendado. Respalda todos tus datos con un clic y recupéralos desde cualquier backup anterior. Sin configuración técnica.',
+    'gdrive.cardTitle':'Conectar en 3 pasos',
+    'gdrive.cardSub':'Solo necesitas una cuenta de Google gratuita. No requiere configuración técnica ni crear proyectos.',
+    'gdrive.s1':'En FinancePro ve a <strong>⚙️ Config → Respaldo → Google Drive</strong> y haz clic en <strong>Conectar con Google</strong>',
+    'gdrive.s2':'Se abrirá el navegador con la pantalla de inicio de sesión de Google. <strong>Inicia sesión</strong> con tu cuenta y otorga el permiso solicitado para acceder a Google Drive',
+    'gdrive.s3':'¡Listo! FinancePro guarda la sesión automáticamente. Desde ahora puedes hacer <strong>respaldo y restauración</strong> con un solo clic desde la app',
+    'gdrive.note':'🔒 <strong style="color:var(--text);">Seguro y privado:</strong> FinancePro solo accede a la carpeta que crea dentro de tu Drive. Tus otros archivos nunca son visibles ni modificados.',
+    'gdrive.backupTitle':'Lo que se respalda',
+    'gdrive.backupItem':'✓ historial de todos los módulos','gdrive.backupEvid':'✓ evidencias de pago',
+    'gdrive.autoToken':'✓ Sesión guardada automáticamente',
+    'gdrive.autoTokenDesc':'Autorizas una sola vez. FinancePro renueva la sesión en segundo plano sin pedirte login de nuevo.',
+    // CTA
+    'cta.label':'Empieza hoy',
+    'cta.title':'Tu historial financiero<br><em style="font-style:normal; background:linear-gradient(135deg,#7C3AED,#A78BFA); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">empieza con un clic</em>',
+    'cta.sub':'Gratis. Sin suscripción. Sin cuenta requerida. Tus datos siempre en tu computadora.',
+    'cta.download':'⬇ Descargar gratis','cta.kofi':'☕ Apoya en Ko-fi',
+    // Footer
+    'footer.copy':'© 2025 Setracus · Hecho con ♥ en Python',
+    'footer.privacy':'Política de Privacidad','footer.terms':'Términos de Servicio',
+  },
+  en: {
+    // Nav
+    'nav.features':'Features','nav.modules':'Modules','nav.install':'Install',
+    'nav.privacy':'Privacy','nav.terms':'Terms','nav.download':'⬇ Download',
+    'nav.kofi':'☕ Support on Ko-fi',
+    // Hero
+    'hero.badge':'by Setracus · Windows · Python 3.14',
+    'hero.h1':'Your money,<br><em>under control.</em>',
+    'hero.p':'Complete personal finance management — income, goals, debts, fixed expenses and cloud backup. All from a single desktop app.',
+    'hero.download':'⬇ Download FinancePro','hero.features':'See features →',
+    // Mockup
+    'mockup.balance':'Total balance','mockup.income':'Monthly income','mockup.expenses':'Monthly expenses',
+    'mockup.goals':'Active goals','mockup.goals.val':'4 goals','mockup.chart':'Monthly breakdown',
+    'mockup.tab1':'💰 New','mockup.tab2':'📋 History','mockup.tab3':'🎯 Goals',
+    'mockup.tab4':'💳 Debts','mockup.tab5':'📆 Expenses',
+    // Stats
+    'stats.modules':'Integrated modules','stats.local':'Local · no subscription',
+    'stats.data':'Your data, always','stats.backup':'Cloud backup',
+    // Features section
+    'features.label':'Features','features.title':'Everything you need<br>in one place',
+    'features.sub':'Designed to be complete without being complicated. Every feature is built for real use, not to impress in a demo.',
+    // Feature cards
+    'feat1.title':'Full history','feat1.desc':'Log income and expenses with categories, manual dates and search. Edit or delete any entry with confirmation.',
+    'feat1.t1':'Search','feat1.t2':'Filters','feat1.t3':'Edit','feat1.t4':'Trash',
+    'feat2.title':'Savings goals','feat2.desc':'Create goals with a target, deadline and progressive contributions. Track progress with progress bars and a full history.',
+    'feat2.t1':'Progress','feat2.t2':'Contributions','feat2.t3':'Withdrawals','feat2.t4':'History',
+    'feat3.title':'Debt tracker','feat3.desc':'Track every debt with creditors, amounts, payments and deadlines. Visualize payment progress in real time.',
+    'feat3.t1':'Payments','feat3.t2':'History','feat3.t3':'Deadline',
+    'feat4.title':'Fixed monthly expenses','feat4.desc':'Rent, Netflix, utilities. Mark payments with a date, add notes, undo payments and automatically project next month.',
+    'feat4.t1':'Projection','feat4.t2':'Undo payment','feat4.t3':'Notes',
+    'feat5.title':'Emergency fund','feat5.desc':'Manage your financial cushion with deposits, withdrawals and goal tracking. Calculate how many months you can cover your expenses.',
+    'feat5.t1':'Deposits','feat5.t2':'Withdrawals','feat5.t3':'Goal',
+    'feat6.title':'Payment receipts','feat6.desc':'Attach images, PDFs or any file as proof of each payment. Organized by category with built-in quick view.',
+    'feat6.t1':'Images','feat6.t3':'Files',
+    'feat7.title':'Charts & trends','feat7.desc':'Visualize your expense breakdown as a pie chart, monthly comparison bars and savings trends over time.',
+    'feat7.t1':'Breakdown','feat7.t2':'Trends',
+    'feat8.title':'Debt capacity','feat8.desc':'Automatically calculates how much you can afford to borrow based on your current income and expenses. Real-time financial health indicators.',
+    'feat8.t1':'Indicators','feat8.t2':'Limits','feat8.t3':'Financial health',
+    'feat9.title':'Google Drive backup','feat9.desc':'Connect your Google account and back up all your data to the cloud with one click. Restore from any previous backup.',
+    'feat9.t3':'Restore',
+    // Modules
+    'modules.label':'Modules','modules.title':'10 tabs,<br>all connected',
+    'modules.sub':'Every module shares the same data. A payment in Fixed Expenses automatically updates the full transaction history.',
+    'mod1.name':'New entry','mod1.desc':'Log income and expenses quickly',
+    'mod2.name':'History','mod2.desc':'All transactions with filters and search',
+    'mod3.name':'Breakdown','mod3.desc':'Pie chart by category',
+    'mod4.name':'Trends','mod4.desc':'Monthly income vs expenses evolution',
+    'mod5.name':'Goals','mod5.desc':'Savings with target and visual progress',
+    'mod6.name':'Debts','mod6.desc':'Debt and payment tracking',
+    'mod7.name':'Fixed Expenses','mod7.desc':'Recurring payments and monthly projection',
+    'mod8.name':'Receipts','mod8.desc':'Attached payment receipts',
+    'mod9.name':'Emergency','mod9.desc':'Emergency fund tracking',
+    'mod10.name':'Debt capacity','mod10.desc':'Credit capacity and financial health',
+    // Tech
+    'tech.label':'Technology','tech.title':'Built with<br>real tools',
+    'tech.sub':'No Electron. No embedded browser. A native Windows desktop app built in pure Python — fast and lightweight.',
+    'tech.savedIn':'Data saved in','tech.formats':'Data formats',
+    'tech.compat':'Compatibility','tech.compatVal':'Windows 10 / 11 · 64-bit · No Python installation required',
+    // Install
+    'install.label':'Installation','install.title':'Ready in 30 seconds',
+    'install.sub':'Standard Windows installer. No manual setup. No Python required.',
+    'install.step1.title':'Download the installer',
+    'install.step1.desc':'Download <strong>FinancePro_Setup_v1.0.0.exe</strong> from the link below. The file is approximately 80 MB.',
+    'install.step1.btn':'⬇ Download FinancePro_Setup_v1.0.0.exe',
+    'install.step2.title':'Run the installer',
+    'install.step2.desc':'Double-click the .exe. No administrator permissions required. Windows may show a SmartScreen warning — click "More info" then "Run anyway".',
+    'install.step3.title':'Follow the wizard',
+    'install.step3.desc':'Choose whether to add a desktop shortcut and whether to open the app when done. Installation takes less than 1 minute.',
+    'install.step4.title':'Done!',
+    'install.step4.desc':'FinancePro appears on your desktop, start menu and in <em>Add or Remove Programs</em>. Your data is saved in:',
+    // GDrive
+    'gdrive.label':'Cloud backup','gdrive.title':'Connect Google Drive',
+    'gdrive.sub':'Optional but recommended. Back up all your data with one click and restore from any previous backup. No technical setup needed.',
+    'gdrive.cardTitle':'Connect in 3 steps',
+    'gdrive.cardSub':'All you need is a free Google account. No technical setup or projects required.',
+    'gdrive.s1':'In FinancePro go to <strong>⚙️ Config → Backup → Google Drive</strong> and click <strong>Connect with Google</strong>',
+    'gdrive.s2':'Your browser will open with the Google sign-in screen. <strong>Sign in</strong> with your account and grant the requested permission to access Google Drive',
+    'gdrive.s3':'Done! FinancePro saves the session automatically. From now on you can <strong>back up and restore</strong> with a single click from the app',
+    'gdrive.note':'🔒 <strong style="color:var(--text);">Secure and private:</strong> FinancePro only accesses the folder it creates inside your Drive. Your other files are never visible or modified.',
+    'gdrive.backupTitle':'What gets backed up',
+    'gdrive.backupItem':'✓ history of all modules','gdrive.backupEvid':'✓ payment receipts',
+    'gdrive.autoToken':'✓ Session saved automatically',
+    'gdrive.autoTokenDesc':'You authorize once. FinancePro renews the session in the background without asking you to log in again.',
+    // CTA
+    'cta.label':'Start today',
+    'cta.title':'Your financial history<br><em style="font-style:normal; background:linear-gradient(135deg,#7C3AED,#A78BFA); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">starts with one click</em>',
+    'cta.sub':'Free. No subscription. No account needed. Your data always on your computer.',
+    'cta.download':'⬇ Download for free','cta.kofi':'☕ Support on Ko-fi',
+    // Footer
+    'footer.copy':'© 2025 Setracus · Made with ♥ in Python',
+    'footer.privacy':'Privacy Policy','footer.terms':'Terms of Service',
+  }
+};
+
+function applyLang(lang) {
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  // Update button label to show the OTHER language you can switch to
+  document.getElementById('langToggle').innerHTML = lang === 'es' ? '🌐 EN' : '🌐 ES';
+  document.documentElement.lang = lang;
+  localStorage.setItem('fp-lang', lang);
+}
+
+function toggleLang() {
+  const current = localStorage.getItem('fp-lang') || 'es';
+  applyLang(current === 'es' ? 'en' : 'es');
+}
+
+// Auto-detect on first visit, respect saved preference after
+(function() {
+  const saved = localStorage.getItem('fp-lang');
+  if (saved) {
+    applyLang(saved);
+  } else {
+    const browserLang = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+    applyLang(browserLang.startsWith('es') ? 'es' : 'en');
+  }
+})();
 </script>
 </body>
 </html>
