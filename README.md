@@ -28,7 +28,8 @@ FinancePro es una app de escritorio nativa para Windows que centraliza toda tu v
 
 ## 🖥️ Capturas de pantalla
 
-> *Agrega capturas de pantalla de la app aquí*
+> <img width="958" height="523" alt="FP" src="https://github.com/user-attachments/assets/36aeafa4-06e7-444b-b63a-ec9b45a81b8f" />
+
 
 ---
 
