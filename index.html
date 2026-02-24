@@ -786,7 +786,8 @@ footer {
     <li><a href="#modulos">Módulos</a></li>
     <li><a href="#instalacion">Instalación</a></li>
     <li><a href="#gdrive">Google Drive</a></li>
-    <li><a href="#instalacion" class="nav-cta">Descargar</a></li>
+    <li><a href="privacy-policy.html">Privacidad</a></li>
+    <li><a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.0/FinancePro_Setup_v1.0.0.exe" class="nav-cta" download>⬇ Descargar</a></li>
   </ul>
 </nav>
 
@@ -799,7 +800,7 @@ footer {
     <h1>Tu dinero,<br><em>bajo control.</em></h1>
     <p>Control financiero personal completo — ingresos, metas, deudas, gastos fijos y respaldo en la nube. Todo desde una sola app de escritorio.</p>
     <div class="hero-actions">
-      <a href="#instalacion" class="btn-primary">⬇ Descargar FinancePro</a>
+      <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.0/FinancePro_Setup_v1.0.0.exe" class="btn-primary" download>⬇ Descargar FinancePro</a>
       <a href="#features" class="btn-secondary">Ver funciones →</a>
     </div>
 
@@ -1102,13 +1103,7 @@ footer {
         <div class="step-content">
           <div class="step-title">Descarga el instalador</div>
           <div class="step-desc">Descarga <strong>FinancePro_Setup_v1.0.0.exe</strong> desde el enlace de abajo. El archivo pesa aproximadamente 80 MB.</div>
-          <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.0/FinancePro_Setup_v1.0.0.exe"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="btn-primary"
-   style="margin-top:14px; display:inline-flex;">
-⬇ Descargar FinancePro v1.0.0
-</a>
+          <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.0/FinancePro_Setup_v1.0.0.exe" class="btn-primary" style="margin-top:14px; display:inline-flex;" download>⬇ Descargar FinancePro_Setup_v1.0.0.exe</a>
         </div>
       </div>
       <div class="step">
@@ -1143,38 +1138,29 @@ footer {
     <div class="reveal">
       <span class="section-label">Respaldo en la nube</span>
       <h2 class="section-title">Conecta Google Drive</h2>
-      <p class="section-sub">Opcional pero recomendado. Respalda todos tus datos con un clic y recupéralos desde cualquier backup anterior.</p>
+      <p class="section-sub">Opcional pero recomendado. Respalda todos tus datos con un clic y recupéralos desde cualquier backup anterior. Sin configuración técnica.</p>
     </div>
 
     <div class="gdrive-card reveal">
       <div>
-        <h3 style="font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; margin-bottom:12px;">Configuración inicial</h3>
-        <p style="color:var(--muted); font-size:.88rem; margin-bottom:24px; line-height:1.7;">Solo necesitas hacer esto una vez. Requiere una cuenta de Google gratuita y crear un proyecto en Google Cloud Console.</p>
+        <h3 style="font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; margin-bottom:12px;">Conectar en 3 pasos</h3>
+        <p style="color:var(--muted); font-size:.88rem; margin-bottom:24px; line-height:1.7;">Solo necesitas una cuenta de Google gratuita. No requiere configuración técnica ni crear proyectos.</p>
         <div class="gdrive-steps">
           <div class="gdrive-step">
             <div class="gdrive-step-n">1</div>
-            <div class="gdrive-step-text">Ve a <strong>console.cloud.google.com</strong> e inicia sesión con tu cuenta Google</div>
+            <div class="gdrive-step-text">En FinancePro ve a <strong>⚙️ Config → Respaldo → Google Drive</strong> y haz clic en <strong>Conectar con Google</strong></div>
           </div>
           <div class="gdrive-step">
             <div class="gdrive-step-n">2</div>
-            <div class="gdrive-step-text">Crea un proyecto nuevo y activa la <strong>Google Drive API</strong></div>
+            <div class="gdrive-step-text">Se abrirá el navegador con la pantalla de inicio de sesión de Google. <strong>Inicia sesión</strong> con tu cuenta y otorga el permiso solicitado para acceder a Google Drive</div>
           </div>
           <div class="gdrive-step">
             <div class="gdrive-step-n">3</div>
-            <div class="gdrive-step-text">En <strong>APIs & Services → Credentials</strong> crea un OAuth 2.0 Client ID de tipo "Aplicación de escritorio"</div>
+            <div class="gdrive-step-text">¡Listo! FinancePro guarda la sesión automáticamente. Desde ahora puedes hacer <strong>respaldo y restauración</strong> con un solo clic desde la app</div>
           </div>
-          <div class="gdrive-step">
-            <div class="gdrive-step-n">4</div>
-            <div class="gdrive-step-text">En <strong>OAuth consent screen</strong> agrega tu correo como "Test user"</div>
-          </div>
-          <div class="gdrive-step">
-            <div class="gdrive-step-n">5</div>
-            <div class="gdrive-step-text">Descarga el JSON y guárdalo como <strong>credentials_gdrive.json</strong> en la carpeta de datos de la app</div>
-          </div>
-          <div class="gdrive-step">
-            <div class="gdrive-step-n">6</div>
-            <div class="gdrive-step-text">En FinancePro ve a <strong>⚙️ Config → Respaldo → Google Drive</strong> y haz clic en Conectar</div>
-          </div>
+        </div>
+        <div style="margin-top:20px; padding:14px 18px; background:rgba(66,133,244,.07); border:1px solid rgba(66,133,244,.18); border-radius:12px; font-size:.82rem; color:var(--muted); line-height:1.6;">
+          🔒 <strong style="color:var(--text);">Seguro y privado:</strong> FinancePro solo accede a la carpeta que crea dentro de tu Drive. Tus otros archivos nunca son visibles ni modificados.
         </div>
       </div>
       <div style="display:flex; flex-direction:column; gap:16px;">
@@ -1191,8 +1177,8 @@ footer {
           </ul>
         </div>
         <div style="background:rgba(16,185,129,.06); border:1px solid rgba(16,185,129,.2); border-radius:16px; padding:20px 24px;">
-          <div style="color:var(--success); font-weight:500; font-size:.85rem; margin-bottom:4px;">✓ Token guardado automáticamente</div>
-          <div style="color:var(--muted); font-size:.8rem; line-height:1.6;">Solo autorizas una vez. FinancePro renueva el token por su cuenta sin volver a pedirte login.</div>
+          <div style="color:var(--success); font-weight:500; font-size:.85rem; margin-bottom:4px;">✓ Sesión guardada automáticamente</div>
+          <div style="color:var(--muted); font-size:.8rem; line-height:1.6;">Autorizas una sola vez. FinancePro renueva la sesión en segundo plano sin pedirte login de nuevo.</div>
         </div>
       </div>
     </div>
@@ -1207,7 +1193,7 @@ footer {
     <h2 class="section-title">Tu historial financiero<br><em style="font-style:normal; background:linear-gradient(135deg,#7C3AED,#A78BFA); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">empieza con un clic</em></h2>
     <p style="color:var(--muted); font-size:1rem; max-width:460px; margin:20px auto 40px; font-weight:300;">Gratis. Sin suscripción. Sin cuenta requerida. Tus datos siempre en tu computadora.</p>
     <div class="hero-actions">
-      <a href="#" class="btn-primary" style="font-size:1.05rem; padding:16px 36px;">⬇ Descargar gratis</a>
+      <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.0/FinancePro_Setup_v1.0.0.exe" class="btn-primary" style="font-size:1.05rem; padding:16px 36px;" download>⬇ Descargar gratis</a>
       <a href="https://ko-fi.com/setracus" class="btn-secondary" target="_blank" rel="noopener">☕ Apoya en Ko-fi</a>
     </div>
   </div>
@@ -1224,6 +1210,7 @@ footer {
     <a href="#modulos">Módulos</a>
     <a href="#instalacion">Instalar</a>
     <a href="#gdrive">Google Drive</a>
+    <a href="privacy-policy.html">Política de Privacidad</a>
     <a href="https://ko-fi.com/setracus" target="_blank" rel="noopener">Ko-fi ☕</a>
   </div>
 </footer>
@@ -1281,7 +1268,7 @@ const statsObserver = new IntersectionObserver((entries) => {
       const val = n.textContent;
       // Animate only pure numbers
       const num = parseFloat(val);
-      if (!isNaN(num) && !val.includes('+') && !val.includes('%')) return;
+      if (isNaN(num)) return; // skip text-only values like "CSV", "GDrive"
       let start = 0;
       const end = num;
       const suffix = val.replace(/[\d.]/g, '');
