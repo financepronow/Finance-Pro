@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="FinancePro — Control financiero personal">
 <meta name="twitter:description" content="App de escritorio Windows gratis para controlar tus finanzas personales.">
 <meta name="twitter:image" content="https://financeproapp.online/og-image.png">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABUklEQVR4nM2XMU4DMRBFv7eCKiVKC03EHbiRKakoVnsGfAOOwgHoWBpqoOQEUBBHY3vGHnudZL+0krNez/ueGSm2AdHm6vYXJ9LP95sBgOEccMozLfD7mxcjzT193FXFMlp4DrrEzFD6oBWuXZfNQCuYk5QN0UABvpMm3OhmP7aTDWJwJtgSZOC7HBzAHP0OgFxcVQ8QeFZudIexnawqaGJA2H0RrlUcf8hNFuAX9Ilqn11POaUS5OA1EjNY0wMAwi4n7179WFv7xACT/sS1h1NghYJ4nqfKwOb6co53vjfxtWT3agMA8Pj8kLxzo/usJrYa8CY4IwBgJ7s9ugFqpJeaDHBqLUc3A606GGD+qd47s4J4nreeDAjqlQUxTmBAOLUsNZGsp5wkA7Wn2lrF8dfZA8fKAhd3vafiXkZK2VT1QGtJNOvOfzf0g1PfjoH/K/ofiYmOS8HbXzoAAAAASUVORK5CYII=">
 <link rel="canonical" href="https://financeproapp.online/">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <script type="application/ld+json">
@@ -30,7 +30,7 @@
   "description": "App de escritorio Windows para control financiero personal. Registra ingresos, gastos, metas de ahorro, deudas y gastos fijos. Gratis, sin suscripción, tus datos siempre locales.",
   "author": { "@type": "Person", "name": "Setracus" },
   "url": "https://financeproapp.online/",
-  "downloadUrl": "https://github.com/financepronow/Finance-Pro/releases/download/v1.0.1/financepro_setup_v1.0.1.exe",
+  "downloadUrl": "https://financeproapp.online/downloads/financepro_setup_v1.0.0.exe",
   "softwareVersion": "1.0.0",
   "fileSize": "80MB"
 }
@@ -109,13 +109,10 @@ nav {
   text-decoration: none;
 }
 
-.nav-logo span {
-  display: inline-block;
-  width: 28px; height: 28px;
-  background: var(--primary);
+.nav-logo img {
+  width: 32px; height: 32px;
   border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .85rem;
+  flex-shrink: 0;
 }
 
 .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; }
@@ -1268,7 +1265,7 @@ footer {
 <!-- NAVBAR -->
 <nav>
   <a href="#" class="nav-logo" aria-label="FinancePro inicio">
-    <span>💰</span>
+    <img src="data:image/png;base64,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" alt="FinancePro logo" style="width:32px;height:32px;border-radius:8px;">
     FinancePro
   </a>
   <ul class="nav-links" role="navigation" aria-label="Navegación principal">
@@ -1278,7 +1275,7 @@ footer {
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#gdrive">Google Drive</a></li>
     <li><a href="#changelog" data-i18n="nav.changelog">Novedades</a></li>
-    <li><a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.1/financepro_setup_v1.0.1.exe" class="nav-cta" download data-i18n="nav.download" aria-label="Descargar FinancePro">⬇ Descargar</a></li>
+    <li><a href="downloads/financepro_setup_v1.0.0.exe" class="nav-cta" download data-i18n="nav.download" aria-label="Descargar FinancePro">⬇ Descargar</a></li>
     <li><button class="nav-lang" onclick="toggleLang()" id="navLangToggle">🌐 EN</button></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -1294,7 +1291,7 @@ footer {
   <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
   <a href="#gdrive" onclick="closeMobileMenu()">Google Drive</a>
   <a href="#changelog" data-i18n="nav.changelog" onclick="closeMobileMenu()">Novedades</a>
-  <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.1/financepro_setup_v1.0.1.exe" class="nav-cta-mobile" download data-i18n="nav.download">⬇ Descargar gratis</a>
+  <a href="downloads/financepro_setup_v1.0.0.exe" class="nav-cta-mobile" download data-i18n="nav.download">⬇ Descargar gratis</a>
 </nav>
 
 <!-- HERO -->
@@ -1310,7 +1307,7 @@ footer {
     <h1 data-i18n="hero.h1">Tu dinero,<br><em>bajo control.</em></h1>
     <p data-i18n="hero.p">Control financiero personal completo — ingresos, metas, deudas, gastos fijos y respaldo en la nube. Todo desde una sola app de escritorio.</p>
     <div class="hero-actions">
-      <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.1/financepro_setup_v1.0.1.exe" class="btn-primary" download data-i18n="hero.download">⬇ Descargar FinancePro</a>
+      <a href="downloads/financepro_setup_v1.0.0.exe" class="btn-primary" download data-i18n="hero.download">⬇ Descargar FinancePro</a>
       <a href="#features" class="btn-secondary" data-i18n="hero.features">Ver funciones →</a>
     </div>
     <a href="https://ko-fi.com/setracus" target="_blank" rel="noopener" class="hero-kofi" data-i18n="nav.kofi">☕ Apoyar en Ko-fi</a>
@@ -1708,8 +1705,8 @@ footer {
         <div class="step-num">1</div>
         <div class="step-content">
           <div class="step-title" data-i18n="install.step1.title">Descarga el instalador</div>
-          <div class="step-desc" data-i18n="install.step1.desc">Descarga <strong>financepro_setup_v1.0.1.exe</strong> desde el enlace de abajo. El archivo pesa aproximadamente 80 MB.</div>
-          <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.1/financepro_setup_v1.0.1.exe" class="btn-primary" style="margin-top:14px; display:inline-flex;" download data-i18n="install.step1.btn">⬇ Descargar financepro_setup_v1.0.1.exe</a>
+          <div class="step-desc" data-i18n="install.step1.desc">Descarga <strong>financepro_setup_v1.0.0.exe</strong> desde el enlace de abajo. El archivo pesa aproximadamente 80 MB.</div>
+          <a href="downloads/financepro_setup_v1.0.0.exe" class="btn-primary" style="margin-top:14px; display:inline-flex;" download data-i18n="install.step1.btn">⬇ Descargar financepro_setup_v1.0.0.exe</a>
         </div>
       </div>
       <div class="step">
@@ -1926,7 +1923,7 @@ footer {
     <h2 class="section-title" data-i18n="cta.title">Tu historial financiero<br><em style="font-style:normal; background:linear-gradient(135deg,#7C3AED,#A78BFA); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">empieza con un clic</em></h2>
     <p style="color:var(--muted); font-size:1rem; max-width:460px; margin:20px auto 40px; font-weight:300;" data-i18n="cta.sub">Gratis. Sin suscripción. Sin cuenta requerida. Tus datos siempre en tu computadora.</p>
     <div class="hero-actions">
-      <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.1/financepro_setup_v1.0.1.exe" class="btn-primary" style="font-size:1.05rem; padding:16px 36px;" download data-i18n="cta.download">⬇ Descargar gratis</a>
+      <a href="downloads/financepro_setup_v1.0.0.exe" class="btn-primary" style="font-size:1.05rem; padding:16px 36px;" download data-i18n="cta.download">⬇ Descargar gratis</a>
       <a href="https://ko-fi.com/setracus" class="btn-secondary" target="_blank" rel="noopener" data-i18n="cta.kofi">☕ Apoya en Ko-fi</a>
     </div>
   </div>
@@ -2132,8 +2129,8 @@ const translations = {
     'install.label':'Instalación','install.title':'Listo en 30 segundos',
     'install.sub':'Instalador de Windows estándar. Sin configuración manual. Sin Python requerido.',
     'install.step1.title':'Descarga el instalador',
-    'install.step1.desc':'Descarga <strong>financepro_setup_v1.0.1.exe</strong> desde el enlace de abajo. El archivo pesa aproximadamente 80 MB.',
-    'install.step1.btn':'⬇ Descargar financepro_setup_v1.0.1.exe',
+    'install.step1.desc':'Descarga <strong>financepro_setup_v1.0.0.exe</strong> desde el enlace de abajo. El archivo pesa aproximadamente 80 MB.',
+    'install.step1.btn':'⬇ Descargar financepro_setup_v1.0.0.exe',
     'install.step2.title':'Ejecuta el instalador',
     'install.step2.desc':'Doble clic en el .exe. No se requieren permisos de administrador. Windows puede mostrar una advertencia de SmartScreen — haz clic en "Más información" y luego "Ejecutar de todas formas".',
     'install.step3.title':'Sigue el wizard',
@@ -2274,8 +2271,8 @@ const translations = {
     'install.label':'Installation','install.title':'Ready in 30 seconds',
     'install.sub':'Standard Windows installer. No manual setup. No Python required.',
     'install.step1.title':'Download the installer',
-    'install.step1.desc':'Download <strong>financepro_setup_v1.0.1.exe</strong> from the link below. The file is approximately 80 MB.',
-    'install.step1.btn':'⬇ Download financepro_setup_v1.0.1.exe',
+    'install.step1.desc':'Download <strong>financepro_setup_v1.0.0.exe</strong> from the link below. The file is approximately 80 MB.',
+    'install.step1.btn':'⬇ Download financepro_setup_v1.0.0.exe',
     'install.step2.title':'Run the installer',
     'install.step2.desc':'Double-click the .exe. No administrator permissions required. Windows may show a SmartScreen warning — click "More info" then "Run anyway".',
     'install.step3.title':'Follow the wizard',
@@ -2392,7 +2389,7 @@ function toggleLang() {
 </script>
 <!-- MOBILE STICKY DOWNLOAD CTA -->
 <div class="mobile-sticky-cta" id="mobileStickyCtaWrap">
-  <a href="https://github.com/financepronow/Finance-Pro/releases/download/v1.0.1/financepro_setup_v1.0.1.exe" download>⬇ Descargar</a>
+  <a href="downloads/financepro_setup_v1.0.0.exe" download>⬇ Descargar</a>
 </div>
 
 <script>
